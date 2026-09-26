@@ -125,9 +125,16 @@ img, picture, video, canvas, svg {
 }
 
 /* Typographic Utility Classes */
-h1 {
+h1,
+h2 {
   font-family: var(--font-logo);
   font-weight: normal;
+}
+
+h2.font-display {
+  font-family: var(--font-logo);
+  font-weight: normal;
+  letter-spacing: 0.02em;
 }
 
 .font-logo {
