@@ -25,7 +25,12 @@ export function JoinBandSection() {
         {/* Guitarist Card */}
         <article className="join-card">
           <div className="join-card-titles">
-            <h3 className="join-card-name font-display">GUITARIST</h3>
+            <h3
+              className="join-card-name font-display"
+              style={{ fontFamily: "Dirty Stains" }}
+            >
+              GUITARIST
+            </h3>
             <div className="join-card-sub font-mono">
               RHYTHM &amp; LEAD GUITAR
             </div>
@@ -64,7 +69,12 @@ export function JoinBandSection() {
         {/* Vocalist Card */}
         <article className="join-card">
           <div className="join-card-titles">
-            <h3 className="join-card-name font-display">VOCALIST</h3>
+            <h3
+              className="join-card-name font-display"
+              style={{ fontFamily: "Dirty Stains" }}
+            >
+              VOCALIST
+            </h3>
             <div className="join-card-sub font-mono">FRONTMAN / VOCALS</div>
           </div>
 

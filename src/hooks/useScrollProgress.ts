@@ -8,8 +8,8 @@ export function useScrollProgress() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY
-      const portalHeight = window.innerHeight * 1.5
-      const progress = Math.min(Math.max(scrollY / portalHeight, 0), 1)
+      const portalTrack = Math.max(window.innerHeight * 0.25, 120)
+      const progress = Math.min(Math.max(scrollY / portalTrack, 0), 1)
       setScrollProgress(progress)
 
       const sections: SectionId[] = ['contact', 'about', 'join', 'news']

@@ -12,7 +12,7 @@
 ---------------------------------------- */
 .portal-wrapper {
   position: relative;
-  height: 200vh; /* Scroll track for portal dolly */
+  height: 125vh; /* Compact portal track: allows zoom animation without a huge dead gap */
 }
 
 .portal-chamber {
@@ -22,12 +22,12 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 2rem 2.5rem;
   background-color: var(--bg-primary);
   overflow: hidden;
-  z-index: 40;
+  z-index: 10;
 }
 
 .portal-meta-top {
@@ -218,11 +218,12 @@
    SHARED SECTION STYLES
 ---------------------------------------- */
 .content-section {
-  padding: 7rem 2.5rem;
+  padding: 5rem 2.5rem;
   border-bottom: 1px solid var(--border-subtle);
   position: relative;
   max-width: 1400px;
   margin: 0 auto;
+  scroll-margin-top: var(--header-height);
 }
 
 .section-header-bar {

@@ -6,9 +6,9 @@ interface HeroPortalProps {
 }
 
 export function HeroPortal({ scrollProgress, scrollTo: _scrollTo }: HeroPortalProps) {
-  const portalScale = 1 + scrollProgress * 10;
-  const portalOpacity = Math.max(1 - scrollProgress * 1.4, 0);
-  const revealOpacity = Math.min(scrollProgress * 1.5, 0.7);
+  const portalScale = 1 + scrollProgress * 8;
+  const portalOpacity = Math.max(1 - scrollProgress * 1.3, 0);
+  const revealOpacity = Math.min(0.2 + scrollProgress * 0.5, 0.75);
 
   return (
     <div className="portal-wrapper" id="portal">
@@ -30,7 +30,7 @@ export function HeroPortal({ scrollProgress, scrollTo: _scrollTo }: HeroPortalPr
           style={{
             backgroundImage: `url(${liveStageImg})`,
             opacity: revealOpacity,
-            transform: `scale(${1.1 - scrollProgress * 0.1})`,
+            transform: `scale(${1.08 - scrollProgress * 0.08})`,
           }}
         />
       </div>
