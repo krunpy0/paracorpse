@@ -1,11 +1,7 @@
-import { useState } from "react";
 import type { BandMember } from "../../types";
 import { BAND_MEMBERS } from "../../data";
-import bandPortraitImg from "../../assets/band-portrait.jpg";
 
 export function BandSection() {
-  const [activeMember, setActiveMember] = useState<BandMember | null>(null);
-
   return (
     <section className="content-section" id="about">
       <div className="section-header-bar">
@@ -37,33 +33,39 @@ export function BandSection() {
         </div>
       </div>
 
-      <div className="band-editorial-layout" style={{ marginTop: "3.5rem" }}>
-        <img
-          src={bandPortraitImg}
-          alt="PARACORPSE Band members"
-          className="band-portrait-img"
-        />
+      <div className="members-section">
+        <div className="members-header-bar">
+          <h3
+            className="members-section-title font-display"
+            style={{ fontFamily: "Dirty Stains" }}
+          >
+            MEMBERS
+          </h3>
+        </div>
 
-        <div className="band-interactive-overlay">
-          {BAND_MEMBERS.map((member) => (
-            <div
-              key={member.id}
-              className={`band-column-hotspot ${activeMember?.id === member.id ? "active" : ""}`}
-              onClick={() => setActiveMember(member)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") setActiveMember(member);
-              }}
-            >
-              <div className="member-info-box">
-                <h3 className="member-name font-display">{member.name}</h3>
-                <div className="member-role font-mono">{member.role}</div>
-                <div className="member-spec font-mono">
-                  <div>{member.equipment}</div>
-                </div>
+        <div className="members-grid">
+          {BAND_MEMBERS.map((member: BandMember) => (
+            <article key={member.id} className="member-card">
+              <div className="member-photo-frame">
+                <img
+                  src={member.photo}
+                  alt={`${member.name} — ${member.role}`}
+                  className="member-photo"
+                  loading="lazy"
+                />
+                <div className="member-photo-gradient" />
               </div>
-            </div>
+
+              <div className="member-content">
+                <div className="member-meta-top">
+                  <span className="member-role font-mono">{member.role}</span>
+                </div>
+
+                <h4 className="member-name font-display">{member.name}</h4>
+
+                <p className="member-bio font-ui">{member.description}</p>
+              </div>
+            </article>
           ))}
         </div>
       </div>

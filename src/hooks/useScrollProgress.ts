@@ -8,11 +8,11 @@ export function useScrollProgress() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY
-      const portalTrack = Math.max(window.innerHeight * 0.25, 120)
-      const progress = Math.min(Math.max(scrollY / portalTrack, 0), 1)
+      const heroHeight = window.innerHeight || 800
+      const progress = Math.min(Math.max(scrollY / heroHeight, 0), 1)
       setScrollProgress(progress)
 
-      const sections: SectionId[] = ['contact', 'about', 'join', 'news']
+      const sections: SectionId[] = ['about', 'join', 'news']
       for (const sec of sections) {
         const el = document.getElementById(sec)
         if (el) {
@@ -26,6 +26,7 @@ export function useScrollProgress() {
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
