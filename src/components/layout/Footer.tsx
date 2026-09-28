@@ -63,8 +63,8 @@ export function Footer({ scrollTo }: FooterProps) {
             <div className="footer-col-title">CONTACT &amp; LOCATION</div>
             <ul className="footer-link-list">
               <li>
-                <a href="mailto:paracorpseband@gmail.com">
-                  PARACORPSEBAND@GMAIL.COM
+                <a href="mailto:paracorpse0@gmail.com">
+                  PARACORPSE0@GMAIL.COM
                 </a>
               </li>
               <li style={{ color: 'var(--text-muted)' }}>

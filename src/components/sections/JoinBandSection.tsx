@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export function JoinBandSection() {
-  const emailAddress = "paracorpseband@gmail.com";
+  const emailAddress = "paracorpse0@gmail.com";
   const [copied, setCopied] = useState(false);
 
   const handleCopyEmail = () => {

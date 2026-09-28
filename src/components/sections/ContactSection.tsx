@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 export function ContactSection() {
   const [copied, setCopied] = useState(false)
-  const directEmail = 'paracorpseband@gmail.com'
+  const directEmail = 'paracorpse0@gmail.com'
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(directEmail)
