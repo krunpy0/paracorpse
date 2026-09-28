@@ -25,10 +25,15 @@ export function BandSection() {
             music explores themes of mental health, inner struggles, difficult
             emotions, and the process of finding a way through them.
           </p>
-          <p style={{ marginTop: "1rem", color: "var(--text-muted)" }}>
-            Based in Miass, Russia. Currently working on new material and
-            looking for musicians to join the project for future releases and
-            live shows.
+          <p style={{ marginTop: "1rem" }}>
+            Based in Miass, Russia. Currently working on new material and{" "}
+            <a href="#join">
+              <span style={{ color: "white", textDecoration: "underline" }}>
+                {" "}
+                looking for musicians
+              </span>
+            </a>{" "}
+            to join the project for future releases and live shows.
           </p>
         </div>
       </div>

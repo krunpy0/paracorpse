@@ -84,7 +84,9 @@
   margin: auto 0;
   transform-origin: center center;
   will-change: transform, opacity;
-  transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+  transition:
+    transform 0.1s ease-out,
+    opacity 0.1s ease-out;
   z-index: 4;
   width: 100%;
   max-width: 1200px;
@@ -125,7 +127,9 @@
   color: var(--text-muted);
   cursor: pointer;
   z-index: 5;
-  transition: opacity var(--transition-fast), color var(--transition-fast);
+  transition:
+    opacity var(--transition-fast),
+    color var(--transition-fast);
   user-select: none;
   background: transparent;
   border: none;
@@ -224,7 +228,9 @@
   align-items: center;
   padding: 0 2.5rem;
   z-index: 100;
-  transition: transform var(--transition-normal), opacity var(--transition-normal);
+  transition:
+    transform var(--transition-normal),
+    opacity var(--transition-normal);
 }
 
 .header-nav {
@@ -240,7 +246,9 @@
   position: relative;
   padding: 0.4rem 0.25rem;
   text-decoration: none;
-  transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
+  transition:
+    color var(--transition-fast),
+    text-decoration-color var(--transition-fast);
   cursor: pointer;
 }
 
@@ -279,7 +287,9 @@
   width: 100%;
   height: 1.5px;
   background: var(--text-primary);
-  transition: transform var(--transition-fast), opacity var(--transition-fast);
+  transition:
+    transform var(--transition-fast),
+    opacity var(--transition-fast);
 }
 
 /* ----------------------------------------
@@ -329,7 +339,10 @@
   letter-spacing: 0.12em;
   font-weight: 600;
   text-transform: uppercase;
-  transition: background-color var(--transition-fast), transform var(--transition-fast), color var(--transition-fast);
+  transition:
+    background-color var(--transition-fast),
+    transform var(--transition-fast),
+    color var(--transition-fast);
   border: 1px solid var(--text-primary);
 }
 
@@ -356,7 +369,9 @@
   background-color: transparent;
   cursor: pointer;
   outline: none;
-  transition: background-color var(--transition-fast), border-bottom-color var(--transition-fast);
+  transition:
+    background-color var(--transition-fast),
+    border-bottom-color var(--transition-fast);
 }
 
 .rammstein-news-row:hover,
@@ -427,7 +442,10 @@
   opacity: 0;
   overflow: hidden;
   margin-top: 0;
-  transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, margin-top 0.35s ease;
+  transition:
+    max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.35s ease,
+    margin-top 0.35s ease;
 }
 
 .rammstein-news-row:hover .rammstein-news-photo-drawer,
@@ -509,7 +527,10 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 2rem;
-  transition: border-color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
+  transition:
+    border-color var(--transition-fast),
+    background-color var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 .join-card:hover {
@@ -685,7 +706,6 @@
   letter-spacing: -0.01em;
 }
 
-
 .members-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -700,7 +720,10 @@
   flex-direction: column;
   overflow: hidden;
   position: relative;
-  transition: border-color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
+  transition:
+    border-color var(--transition-fast),
+    background-color var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 .member-card:hover {
@@ -723,7 +746,9 @@
   object-fit: cover;
   object-position: center 20%;
   filter: contrast(110%) brightness(95%);
-  transition: transform var(--transition-normal), filter var(--transition-normal);
+  transition:
+    transform var(--transition-normal),
+    filter var(--transition-normal);
   display: block;
 }
 
@@ -755,7 +780,6 @@
     var(--bg-tertiary) 100%
   );
 }
-
 
 .member-content {
   padding: 2.25rem 2.25rem 2.5rem;
@@ -795,7 +819,6 @@
   color: var(--text-secondary);
   flex-grow: 1;
 }
-
 
 /* ----------------------------------------
    06. CONTACT US (CHANNELS & DIRECT INQUIRIES)
@@ -847,7 +870,10 @@
   background: var(--bg-tertiary);
   border: 1px solid var(--border-subtle);
   text-decoration: none;
-  transition: border-color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
+  transition:
+    border-color var(--transition-fast),
+    background-color var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 .social-item:hover {
@@ -897,7 +923,9 @@
 .social-arrow {
   font-size: 1.1rem;
   color: var(--text-muted);
-  transition: color var(--transition-fast), transform var(--transition-fast);
+  transition:
+    color var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 .social-item:hover .social-arrow {
@@ -947,7 +975,10 @@
   letter-spacing: 0.1em;
   border-radius: 2px;
   white-space: nowrap;
-  transition: color var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast);
+  transition:
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    background-color var(--transition-fast);
 }
 
 .contact-copy-btn:hover {
@@ -1236,7 +1267,6 @@
     padding: 1.75rem 1.5rem 2rem;
   }
 
-
   .main-footer {
     padding: 3.5rem 1.5rem 2.5rem;
   }
@@ -1284,4 +1314,3 @@
     font-size: clamp(1.15rem, 5vw, 2.25rem);
   }
 }
-
