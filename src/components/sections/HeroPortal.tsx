@@ -1,4 +1,4 @@
-import liveStageImg from "../../assets/live-stage.jpg";
+// import liveStageImg from "../../assets/live-stage.jpg";
 
 interface HeroPortalProps {
   scrollProgress: number;
@@ -18,7 +18,7 @@ export function HeroPortal({ scrollProgress, scrollTo }: HeroPortalProps) {
         <div
           className="portal-bg-layer"
           style={{
-            backgroundImage: `url(${liveStageImg})`,
+            // backgroundImage: `url(${liveStageImg})`,
             transform: `scale(${bgScale})`,
           }}
         />
