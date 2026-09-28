@@ -59,7 +59,9 @@ export function Footer({
 
           {isJoinEnabled ? (
             <div>
-              <div className="footer-col-title">{footer.recruitmentTitle || "RECRUITMENT"}</div>
+              <div className="footer-col-title">
+                {footer.recruitmentTitle || "RECRUITMENT"}
+              </div>
               <ul className="footer-link-list">
                 {joinUs.cards.map((card) => (
                   <li key={card.id}>
@@ -83,7 +85,9 @@ export function Footer({
             </div>
           ) : (
             <div>
-              <div className="footer-col-title">{footer.recruitmentTitle || "RECRUITMENT"}</div>
+              <div className="footer-col-title">
+                {footer.recruitmentTitle || "RECRUITMENT"}
+              </div>
               <ul className="footer-link-list">
                 <li style={{ color: "var(--text-muted)" }}>
                   Auditions Currently Closed
@@ -97,11 +101,7 @@ export function Footer({
             <ul className="footer-link-list">
               {footer.socialLinks.map((link) => (
                 <li key={link.id}>
-                  <a
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <a href={link.url} target="_blank" rel="noopener noreferrer">
                     {link.label} ↗
                   </a>
                 </li>
@@ -132,25 +132,17 @@ export function Footer({
           </div>
         </div>
 
-        <div className="footer-bottom-meta font-mono" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <div>© {currentYear} {footer.copyright || "PARACORPSE. ALL RIGHTS RESERVED."}</div>
+        <div
+          className="footer-bottom-meta font-mono"
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
           <div>
-            <a
-              href="#/admin"
-              onClick={handleAdminClick}
-              className="admin-footer-link"
-              style={{
-                color: "#444",
-                fontSize: "0.75rem",
-                textDecoration: "none",
-                transition: "color 0.2s ease",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#888")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "#444")}
-              title="Site Admin Console"
-            >
-              Admin
-            </a>
+            © {currentYear}{" "}
+            {footer.copyright || "PARACORPSE. ALL RIGHTS RESERVED."}
           </div>
         </div>
       </div>

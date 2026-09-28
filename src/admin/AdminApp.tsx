@@ -240,7 +240,7 @@ export function AdminApp({ onBackToSite }: AdminAppProps) {
 
           <button
             type="button"
-            className="btn-sm-danger"
+            className="btn-secondary-action"
             onClick={handleLogout}
           >
             Sign Out
