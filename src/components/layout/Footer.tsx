@@ -144,6 +144,24 @@ export function Footer({
             © {currentYear}{" "}
             {footer.copyright || "PARACORPSE. ALL RIGHTS RESERVED."}
           </div>
+          <div>
+            <a
+              href="#/admin"
+              onClick={handleAdminClick}
+              className="admin-footer-link"
+              style={{
+                color: "#444",
+                fontSize: "0.75rem",
+                textDecoration: "none",
+                transition: "color 0.2s ease",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#888")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "#444")}
+              title="Site Admin Console"
+            >
+              Admin
+            </a>
+          </div>
         </div>
       </div>
     </footer>
