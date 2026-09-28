@@ -1,8 +1,17 @@
-import { useState } from 'react'
-import { NEWS_DATA } from '../../data'
+import { useState } from "react";
+import type { NewsItem } from "../../types";
+import { SITE_CONTENT, resolveMediaUrl } from "../../data";
 
-export function NewsSection() {
-  const [hoveredId, setHoveredId] = useState<string | null>(null)
+interface NewsSectionProps {
+  news?: NewsItem[];
+}
+
+export function NewsSection({ news = SITE_CONTENT.news }: NewsSectionProps) {
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
+
+  if (!news || news.length === 0) {
+    return null;
+  }
 
   return (
     <section className="content-section" id="news">
@@ -11,13 +20,14 @@ export function NewsSection() {
       </div>
 
       <div className="rammstein-news-list">
-        {NEWS_DATA.map((item) => {
-          const isExpanded = hoveredId === item.id
+        {news.map((item) => {
+          const isExpanded = hoveredId === item.id;
+          const imageUrl = resolveMediaUrl(item.previewImage);
 
           return (
             <article
               key={item.id}
-              className={`rammstein-news-row ${isExpanded ? 'active' : ''}`}
+              className={`rammstein-news-row ${isExpanded ? "active" : ""}`}
               onMouseEnter={() => setHoveredId(item.id)}
               onMouseLeave={() => setHoveredId(null)}
               onClick={() => setHoveredId(hoveredId === item.id ? null : item.id)}
@@ -29,26 +39,30 @@ export function NewsSection() {
                 {item.headline}
               </h3>
 
-              <p className="rammstein-news-text font-ui">
-                {item.content}
-              </p>
+              <p className="rammstein-news-text font-ui">{item.content}</p>
 
-              {/* Photo smoothly reveals underneath on hover */}
-              <div className={`rammstein-news-photo-drawer ${isExpanded ? 'open' : ''}`}>
-                <div className="rammstein-photo-container">
-                  <img
-                    src={item.previewImage}
-                    alt={item.headline}
-                    className="rammstein-news-img"
-                    loading="lazy"
-                  />
-                  <div className="rammstein-photo-overlay" />
+              {/* Photo smoothly reveals underneath on hover if photo exists */}
+              {imageUrl && (
+                <div
+                  className={`rammstein-news-photo-drawer ${
+                    isExpanded ? "open" : ""
+                  }`}
+                >
+                  <div className="rammstein-photo-container">
+                    <img
+                      src={imageUrl}
+                      alt={item.headline}
+                      className="rammstein-news-img"
+                      loading="lazy"
+                    />
+                    <div className="rammstein-photo-overlay" />
+                  </div>
                 </div>
-              </div>
+              )}
             </article>
-          )
+          );
         })}
       </div>
     </section>
-  )
+  );
 }

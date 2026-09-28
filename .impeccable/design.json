@@ -1,0 +1,236 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-28T19:09:20.000Z",
+  "title": "Design System: PARACORPSE",
+  "extensions": {
+    "colorMeta": {
+      "bg-pure": {
+        "role": "neutral",
+        "displayName": "Void Black",
+        "canonical": "#000000",
+        "tonalRamp": ["#000000", "#0a0a0a", "#141414", "#202020", "#333333", "#555555", "#888888", "#cccccc"]
+      },
+      "bg-primary": {
+        "role": "neutral",
+        "displayName": "Obsidian Primary",
+        "canonical": "#060606",
+        "tonalRamp": ["#040404", "#060606", "#0f0f10", "#18181a", "#252528", "#404044", "#707078", "#b8b8c0"]
+      },
+      "bg-secondary": {
+        "role": "neutral",
+        "displayName": "Graphite Secondary",
+        "canonical": "#0d0d0e",
+        "tonalRamp": ["#080809", "#0d0d0e", "#161618", "#222225", "#35353a", "#5a5a62", "#8c8c96", "#d4d4dc"]
+      },
+      "bg-tertiary": {
+        "role": "neutral",
+        "displayName": "Steel Tertiary",
+        "canonical": "#141416",
+        "tonalRamp": ["#0c0c0e", "#141416", "#1e1e22", "#2e2e34", "#484852", "#6e6e7c", "#9c9cae", "#dedee8"]
+      },
+      "bg-surface": {
+        "role": "neutral",
+        "displayName": "Charcoal Surface",
+        "canonical": "#1a1a1c",
+        "tonalRamp": ["#101012", "#1a1a1c", "#26262a", "#3a3a40", "#555560", "#7c7c8c", "#ababbe", "#e4e4ee"]
+      },
+      "text-primary": {
+        "role": "primary",
+        "displayName": "Text Stark White",
+        "canonical": "#f5f5f3",
+        "tonalRamp": ["#1f1f1d", "#3f3f3a", "#666660", "#94948d", "#c2c2bd", "#dfdfe0", "#f0f0ee", "#ffffff"]
+      },
+      "text-secondary": {
+        "role": "secondary",
+        "displayName": "Text Secondary Silver",
+        "canonical": "#a0a09e",
+        "tonalRamp": ["#141413", "#2b2b2a", "#4b4b49", "#727270", "#9c9c99", "#bfbfbd", "#dedede", "#f5f5f5"]
+      },
+      "text-muted": {
+        "role": "neutral",
+        "displayName": "Text Muted Graphite",
+        "canonical": "#5c5c5a",
+        "tonalRamp": ["#0c0c0b", "#1c1c1b", "#333331", "#4f4f4d", "#70706e", "#949492", "#bebebc", "#e8e8e6"]
+      },
+      "signal-white": {
+        "role": "primary",
+        "displayName": "Signal White",
+        "canonical": "#ffffff",
+        "tonalRamp": ["#1a1a1a", "#383838", "#5c5c5c", "#858585", "#b0b0b0", "#d6d6d6", "#ededed", "#ffffff"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display Monolith",
+        "purpose": "Hero brand wordmark, high-impact distressed titles, and featured role headings."
+      },
+      "headline": {
+        "displayName": "Headline Unbounded",
+        "purpose": "Major section markers, modal headlines, and heavy structural anchors."
+      },
+      "title": {
+        "displayName": "Title Unbounded/DirtyStains",
+        "purpose": "News item headlines and vacancy card role headers."
+      },
+      "body": {
+        "displayName": "Body Inter",
+        "purpose": "Manifesto paragraphs, member biographies, and continuous editorial reading."
+      },
+      "label": {
+        "displayName": "Telemetry JetBrains Mono",
+        "purpose": "Audition requirements, metadata, timecodes, navigation links, and button copy."
+      }
+    },
+    "shadows": [
+      {
+        "name": "hero-ambient-glow",
+        "value": "drop-shadow(0 0 50px rgba(255, 255, 255, 0.15))",
+        "purpose": "Diffuse ambient radiance behind the primary hero wordmark."
+      },
+      {
+        "name": "content-sheet-crest",
+        "value": "0 -30px 60px rgba(0, 0, 0, 0.7)",
+        "purpose": "Atmospheric separation between rising content sheet and sticky hero chamber."
+      },
+      {
+        "name": "modal-scrim",
+        "value": "rgba(0, 0, 0, 0.88)",
+        "purpose": "Full-bleed blackout backdrop with 8px blur for focus dialogs."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-heavy",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Primary kinetic response curve for card hovers, button presses, and drawer reveals."
+      },
+      {
+        "name": "ease-cinematic",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Parallax scroll and curtain slide transitions."
+      },
+      {
+        "name": "transition-fast",
+        "value": "0.18s cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Hover color switches, hairline border shifts, and micro-translations."
+      },
+      {
+        "name": "transition-normal",
+        "value": "0.32s cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Header fade-in, mobile menu drawer, and image zoom transitions."
+      }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "768px" },
+      { "name": "tablet", "value": "960px" },
+      { "name": "desktop", "value": "1400px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "High-contrast action trigger with monospace uppercase typography and zero-radius form.",
+      "html": "<button class=\"ds-btn-primary\"><span>APPLY FOR AUDITION</span><span aria-hidden=\"true\">→</span></button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; padding: 14px 28px; background: #f5f5f3; color: #060606; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; letter-spacing: 0.12em; font-weight: 600; text-transform: uppercase; border: 1px solid #f5f5f3; border-radius: 0px; cursor: pointer; transition: background-color 0.18s cubic-bezier(0.16, 1, 0.3, 1), transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), color 0.18s cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn-primary:hover { background: #ffffff; color: #000000; transform: translateY(-1px); }"
+    },
+    {
+      "name": "Navigation Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Brutalist uppercase navigation anchor with underline on hover and active high-luminescence state.",
+      "html": "<a class=\"ds-nav-link active\" href=\"#\">NEWS</a>",
+      "css": ".ds-nav-link { font-family: 'Unbounded', sans-serif; font-size: 0.82rem; letter-spacing: 0.12em; color: #a0a09e; text-decoration: none; padding: 0.4rem 0.25rem; text-transform: uppercase; transition: color 0.18s cubic-bezier(0.16, 1, 0.3, 1); } .ds-nav-link:hover { color: #ffffff; text-decoration: underline; text-underline-offset: 6px; } .ds-nav-link.active { color: #ffffff; font-weight: 600; }"
+    },
+    {
+      "name": "Recruitment Card",
+      "kind": "card",
+      "refersTo": "card-secondary",
+      "description": "Audition vacancy monolith with Dirty Stains role header, telemetry requirements, and inverted CTA.",
+      "html": "<article class=\"ds-card-recruitment\"><div class=\"ds-card-title\">GUITARIST</div><div class=\"ds-card-sub\">RHYTHM &amp; LEAD GUITAR</div><p class=\"ds-card-body\">Dense industrial sound, low drop tunings (Drop A / Drop B), tight synchronization with rhythm section.</p><button class=\"ds-btn-primary\">APPLY FOR GUITARIST →</button></article>",
+      "css": ".ds-card-recruitment { background: #0d0d0e; border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 0px; padding: 36px 30px; display: flex; flex-direction: column; gap: 1.25rem; transition: border-color 0.18s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.18s cubic-bezier(0.16, 1, 0.3, 1), transform 0.18s cubic-bezier(0.16, 1, 0.3, 1); } .ds-card-recruitment:hover { border-color: rgba(255, 255, 255, 0.35); background: #141416; transform: translateY(-2px); } .ds-card-title { font-family: 'Dirty Stains', 'Unbounded', sans-serif; font-size: 1.8rem; color: #f5f5f3; text-transform: uppercase; } .ds-card-sub { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #5c5c5a; letter-spacing: 0.12em; text-transform: uppercase; } .ds-card-body { font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #a0a09e; line-height: 1.6; margin: 0; }"
+    },
+    {
+      "name": "Social Channel Row",
+      "kind": "custom",
+      "refersTo": "social-item",
+      "description": "Interactive external channel link with horizontal slide hover feedback.",
+      "html": "<div class=\"ds-social-item\"><span class=\"ds-social-name\">TIKTOK</span><span class=\"ds-social-url\">tiktok.com/@paracorpse</span><span class=\"ds-social-arrow\">↗</span></div>",
+      "css": ".ds-social-item { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: #141416; border: 1px solid rgba(255, 255, 255, 0.08); font-family: 'JetBrains Mono', monospace; text-decoration: none; transition: border-color 0.18s, background-color 0.18s, transform 0.18s; cursor: pointer; } .ds-social-item:hover { border-color: rgba(255, 255, 255, 0.35); background: #1a1a1c; transform: translateX(4px); } .ds-social-name { font-size: 0.9rem; font-weight: 600; color: #f5f5f3; letter-spacing: 0.08em; } .ds-social-url { font-size: 0.8rem; color: #a0a09e; } .ds-social-arrow { font-size: 1rem; color: #5c5c5a; transition: color 0.18s; } .ds-social-item:hover .ds-social-arrow { color: #ffffff; }"
+    },
+    {
+      "name": "News Row",
+      "kind": "card",
+      "refersTo": "rammstein-news-row",
+      "description": "Full-width editorial news entry with high-visibility headline and hover boundary brightening.",
+      "html": "<article class=\"ds-news-row\"><h3 class=\"ds-news-title\">NEW CHAPTER BEGINS</h3><p class=\"ds-news-body\">PARACORPSE returns to the rehearsal studio with fresh modern metal material and an expanded sound exploration.</p></article>",
+      "css": ".ds-news-row { padding: 32px 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); background: transparent; cursor: pointer; transition: background-color 0.18s, border-color 0.18s; } .ds-news-row:hover { background: rgba(255, 255, 255, 0.02); border-bottom-color: rgba(255, 255, 255, 0.35); } .ds-news-title { font-family: 'Unbounded', sans-serif; font-size: 1.8rem; font-weight: 800; color: #f5f5f3; margin: 0 0 0.75rem 0; letter-spacing: -0.015em; transition: color 0.18s; } .ds-news-row:hover .ds-news-title { color: #ffffff; } .ds-news-body { font-family: 'Inter', sans-serif; font-size: 1rem; color: #a0a09e; line-height: 1.6; margin: 0; max-width: 85ch; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Monolithic Archival Apparatus",
+    "overview": "PARACORPSE is an uncompromising digital presence for a modern metal and nu-metal band born in Miass, South Ural. The aesthetic balances stark brutalist weight with precision-engineered technical restraint. Rather than mimicking generic neon-accented cyber-metal tropes or cluttered grunge graphics, the interface acts as a physical archival artifact: cold obsidian surfaces, razor-sharp architectural borders, distressed metal typography, and stark monochrome contrast.\n\nThe visual experience leads with an atmospheric curtain reveal. The monolithic hero chamber sits pinned in space, gradually sliding beneath an architectural obsidian content sheet upon scrolling. Depth is established through disciplined tonal steps, feathered radial vignettes, and an omnipresent physical film-grain layer that gives digital pixels the tactile grit of 35mm stage photography.\n\nColor is treated as a rare, organic phenomenon. Interface elements never employ saturated synthetic accents; emotional hue enters purely through stage photography, raw portraits, and rehearsal video textures. When interaction occurs, the system responds with crisp, high-velocity kinetic transitions and stark white inversion.",
+    "keyCharacteristics": [
+      "Monolithic Obsidian Void: Surfaces descend from pitch black #000000 to #060606, accented solely by stepped shades of graphite and raw steel.",
+      "Dual Typographic Tension: Contrast between raw, distressed metal lettering (Dirty Stains) and severe high-precision telemetry (JetBrains Mono).",
+      "Tactile Analog Grain: A persistent overlay of SVG fractal noise that breaks digital sterility.",
+      "Architectural Edge Discipline: Strict 0px radius on all primary cards, buttons, and frames; borders are hairline indicators (1px) of state and boundary.",
+      "Tactile State Inversion: High-contrast interaction where primary buttons and active indicators switch instantly between deep graphite and pure signal white."
+    ],
+    "rules": [
+      {
+        "name": "The Absolute Monolith Rule",
+        "body": "Zero decorative chromatic color accents are permitted on public UI chrome. No synthetic blues, purples, or neon greens. Chromatic color belongs exclusively to photography, documentary video, and live stage lighting.",
+        "section": "colors"
+      },
+      {
+        "name": "The Inversion Contrast Rule",
+        "body": "Primary action triggers invert the polarity of the surface. A dark card hosts a white button (#f5f5f3 with #060606 text), which intensifies to pure #ffffff with #000000 text on hover.",
+        "section": "colors"
+      },
+      {
+        "name": "The Hairline Boundary Rule",
+        "body": "Borders must never exceed 1px in width. Density and separation are created by modulating opacity (0.08 → 0.18 → 0.35), never by thickening lines.",
+        "section": "colors"
+      },
+      {
+        "name": "The Brutalist Casing Rule",
+        "body": "All display headlines, vacancy titles, section markers, telemetry tags, navigation links, and primary CTA buttons must be set in full UPPERCASE. Editorial body paragraphs and member bios remain in standard mixed case for unhindered readability.",
+        "section": "typography"
+      },
+      {
+        "name": "The Monospace Telemetry Rule",
+        "body": "Any metadata, status cue, audition requirement, coordinate, or date must be rendered exclusively in JetBrains Mono with loose tracking (0.12em to 0.25em).",
+        "section": "typography"
+      },
+      {
+        "name": "The Tonal Layering Rule",
+        "body": "Standard cards, inputs, and tables never emit drop shadows. Elevation is communicated solely by stepping from --bg-primary (#060606) to --bg-secondary (#0d0d0e) to --bg-tertiary (#141416).",
+        "section": "elevation"
+      },
+      {
+        "name": "The Grain Integrity Rule",
+        "body": "The physical film grain layer must never be disabled, hidden, or made interactive (pointer-events: none). It unifies photographic assets and flat CSS surfaces into a single physical medium.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do maintain the monochromatic obsidian aesthetic across all public pages (#000000 through #1a1a1c).",
+      "Do enforce strict 0px border-radius on all main buttons, cards, and image frames.",
+      "Do use Dirty Stains for the band name, logo, and selected high-impact role headers; use Unbounded for clean display headlines.",
+      "Do format all telemetry labels, audition requirements, dates, and buttons in uppercase with JetBrains Mono.",
+      "Do reserve high-contrast white button fills (#f5f5f3 / #ffffff) for primary call-to-actions.",
+      "Do preserve the global SVG film-grain layer (0.032 opacity) to maintain physical analog grit.",
+      "Do keep border widths at exactly 1px, adjusting only their alpha opacity (0.08, 0.18, 0.35) for state transitions."
+    ],
+    "donts": [
+      "Don't introduce synthetic accent colors (neon cyan, neon purple, lime green) into the public website chrome.",
+      "Don't use pill-shaped (rounded-full), bubbled (rounded-xl), or playful bubbly corners on structural components.",
+      "Don't use standard sans-serif for telemetry data, audition metadata, or technical cues; always use JetBrains Mono.",
+      "Don't apply diffuse multi-color or heavy colored drop shadows to cards; rely strictly on tonal stepped obsidian backgrounds.",
+      "Don't use low-contrast gray text on dark backgrounds below WCAG AA standards (minimum #a0a09e for body copy, #f5f5f3 for critical titles).",
+      "Don't add decorative iconography or emoji to metal titles; use minimal clean monochrome SVG icons with stroke-width 2px or clean glyph arrows (↗, ↑, →)."
+    ]
+  }
+}

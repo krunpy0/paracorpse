@@ -46,4 +46,60 @@ export interface BandMember {
   status?: string;
 }
 
+export interface JoinCard {
+  id: string;
+  title: string;
+  subtitle: string;
+  soundStyle: string;
+  requirements: string[];
+  buttonText: string;
+  emailSubject?: string;
+  emailBody?: string;
+}
+
+export interface JoinUsContent {
+  enabled: boolean;
+  title: string;
+  subtitle: string;
+  contactEmail: string;
+  cards: JoinCard[];
+}
+
+export interface AboutContent {
+  title: string;
+  lead: string;
+  paragraphs: string[];
+  membersTitle: string;
+  members: BandMember[];
+}
+
+export interface HeroContent {
+  title: string;
+  scrollCue: string;
+}
+
+export interface SocialLink {
+  id: string;
+  label: string;
+  url: string;
+}
+
+export interface FooterContent {
+  wordmark: string;
+  recruitmentTitle: string;
+  contactEmail: string;
+  locationCity: string;
+  locationCountry: string;
+  copyright: string;
+  socialLinks: SocialLink[];
+}
+
+export interface SiteContent {
+  hero: HeroContent;
+  news: NewsItem[];
+  joinUs: JoinUsContent;
+  about: AboutContent;
+  footer: FooterContent;
+}
+
 export type SectionId = "news" | "join" | "about" | "contact";

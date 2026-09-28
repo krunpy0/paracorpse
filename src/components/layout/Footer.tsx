@@ -1,16 +1,40 @@
+import type { FooterContent, JoinUsContent } from "../../types";
+import { SITE_CONTENT } from "../../data";
+
 interface FooterProps {
-  scrollTo: (id: string) => void
+  scrollTo: (id: string) => void;
+  footer?: FooterContent;
+  joinUs?: JoinUsContent;
+  onOpenAdmin?: () => void;
 }
 
-export function Footer({ scrollTo }: FooterProps) {
+export function Footer({
+  scrollTo,
+  footer = SITE_CONTENT.footer,
+  joinUs = SITE_CONTENT.joinUs,
+  onOpenAdmin,
+}: FooterProps) {
+  const currentYear = new Date().getFullYear();
+  const isJoinEnabled = joinUs?.enabled ?? true;
+
+  const handleAdminClick = (e: React.MouseEvent) => {
+    if (onOpenAdmin) {
+      e.preventDefault();
+      onOpenAdmin();
+    }
+  };
+
   return (
     <footer className="main-footer">
       <div className="footer-inner">
         <div className="footer-top-row">
           <div className="footer-wordmark font-logo">
-            PARACORPSE
+            {footer.wordmark || "PARACORPSE"}
           </div>
-          <button onClick={() => scrollTo('portal')} className="back-to-top-btn font-mono">
+          <button
+            onClick={() => scrollTo("portal")}
+            className="back-to-top-btn font-mono"
+          >
             <span>RETURN TO TOP ↑</span>
           </button>
         </div>
@@ -19,43 +43,69 @@ export function Footer({ scrollTo }: FooterProps) {
           <div>
             <div className="footer-col-title">NAVIGATION</div>
             <ul className="footer-link-list">
-              <li><button onClick={() => scrollTo('news')}>NEWS</button></li>
-              <li><button onClick={() => scrollTo('join')}>JOIN A BAND</button></li>
-              <li><button onClick={() => scrollTo('about')}>ABOUT US</button></li>
-              <li><button onClick={() => scrollTo('contact')}>CONTACT US</button></li>
-            </ul>
-          </div>
-
-          <div>
-            <div className="footer-col-title">RECRUITMENT</div>
-            <ul className="footer-link-list">
-              <li><button onClick={() => scrollTo('join')}>RHYTHM GUITARIST</button></li>
-              <li><button onClick={() => scrollTo('join')}>LEAD GUITARIST</button></li>
-              <li><button onClick={() => scrollTo('join')}>VOCALIST</button></li>
-              <li style={{ color: 'var(--text-muted)', fontSize: '0.75rem', marginTop: '0.25rem' }}>
-                MIASS (AGE 15+)
+              <li>
+                <button onClick={() => scrollTo("news")}>NEWS</button>
+              </li>
+              {isJoinEnabled && (
+                <li>
+                  <button onClick={() => scrollTo("join")}>JOIN A BAND</button>
+                </li>
+              )}
+              <li>
+                <button onClick={() => scrollTo("about")}>ABOUT US</button>
               </li>
             </ul>
           </div>
+
+          {isJoinEnabled ? (
+            <div>
+              <div className="footer-col-title">{footer.recruitmentTitle || "RECRUITMENT"}</div>
+              <ul className="footer-link-list">
+                {joinUs.cards.map((card) => (
+                  <li key={card.id}>
+                    <button onClick={() => scrollTo("join")}>
+                      {card.title}
+                    </button>
+                  </li>
+                ))}
+                {joinUs.subtitle && (
+                  <li
+                    style={{
+                      color: "var(--text-muted)",
+                      fontSize: "0.75rem",
+                      marginTop: "0.25rem",
+                    }}
+                  >
+                    MIASS (AGE 15+)
+                  </li>
+                )}
+              </ul>
+            </div>
+          ) : (
+            <div>
+              <div className="footer-col-title">{footer.recruitmentTitle || "RECRUITMENT"}</div>
+              <ul className="footer-link-list">
+                <li style={{ color: "var(--text-muted)" }}>
+                  Auditions Currently Closed
+                </li>
+              </ul>
+            </div>
+          )}
 
           <div>
             <div className="footer-col-title">OFFICIAL LINKS</div>
             <ul className="footer-link-list">
-              <li>
-                <a href="https://tiktok.com/@paracorpse" target="_blank" rel="noopener noreferrer">
-                  TIK TOK ↗
-                </a>
-              </li>
-              <li>
-                <a href="https://instagram.com/paracorpseband" target="_blank" rel="noopener noreferrer">
-                  INSTAGRAM ↗
-                </a>
-              </li>
-              <li>
-                <a href="https://vk.ru/paracorpse" target="_blank" rel="noopener noreferrer">
-                  VK ↗
-                </a>
-              </li>
+              {footer.socialLinks.map((link) => (
+                <li key={link.id}>
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {link.label} ↗
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -63,24 +113,47 @@ export function Footer({ scrollTo }: FooterProps) {
             <div className="footer-col-title">CONTACT &amp; LOCATION</div>
             <ul className="footer-link-list">
               <li>
-                <a href="mailto:paracorpse0@gmail.com">
-                  PARACORPSE0@GMAIL.COM
+                <a href={`mailto:${footer.contactEmail}`}>
+                  {footer.contactEmail.toUpperCase()}
                 </a>
               </li>
-              <li style={{ color: 'var(--text-muted)' }}>
-                MIASS, SOUTH URAL
+              <li style={{ color: "var(--text-muted)" }}>
+                {footer.locationCity}
               </li>
-              <li style={{ color: 'var(--text-muted)', fontSize: '0.75rem' }}>
-                RUSSIAN FEDERATION
+              <li
+                style={{
+                  color: "var(--text-muted)",
+                  fontSize: "0.75rem",
+                }}
+              >
+                {footer.locationCountry}
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="footer-bottom-meta font-mono">
-          <div>© {new Date().getFullYear()} PARACORPSE. ALL RIGHTS RESERVED.</div>
+        <div className="footer-bottom-meta font-mono" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <div>© {currentYear} {footer.copyright || "PARACORPSE. ALL RIGHTS RESERVED."}</div>
+          <div>
+            <a
+              href="#/admin"
+              onClick={handleAdminClick}
+              className="admin-footer-link"
+              style={{
+                color: "#444",
+                fontSize: "0.75rem",
+                textDecoration: "none",
+                transition: "color 0.2s ease",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#888")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "#444")}
+              title="Site Admin Console"
+            >
+              Admin
+            </a>
+          </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }

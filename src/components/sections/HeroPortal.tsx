@@ -1,11 +1,17 @@
-// import liveStageImg from "../../assets/live-stage.jpg";
+import type { HeroContent } from "../../types";
+import { SITE_CONTENT } from "../../data";
 
 interface HeroPortalProps {
   scrollProgress: number;
   scrollTo: (id: string) => void;
+  hero?: HeroContent;
 }
 
-export function HeroPortal({ scrollProgress, scrollTo }: HeroPortalProps) {
+export function HeroPortal({
+  scrollProgress,
+  scrollTo,
+  hero = SITE_CONTENT.hero,
+}: HeroPortalProps) {
   // Gentle parallax and subtle fade as the content sheet slides up over the hero
   const textTranslateY = scrollProgress * 50;
   const textOpacity = Math.max(1 - scrollProgress * 1.15, 0);
@@ -18,7 +24,6 @@ export function HeroPortal({ scrollProgress, scrollTo }: HeroPortalProps) {
         <div
           className="portal-bg-layer"
           style={{
-            // backgroundImage: `url(${liveStageImg})`,
             transform: `scale(${bgScale})`,
           }}
         />
@@ -37,7 +42,7 @@ export function HeroPortal({ scrollProgress, scrollTo }: HeroPortalProps) {
             opacity: textOpacity,
           }}
         >
-          <h1 className="portal-logo-text font-logo">PARACORPSE</h1>
+          <h1 className="portal-logo-text font-logo">{hero.title}</h1>
         </div>
 
         {/* Minimal Scroll Cue */}
@@ -54,7 +59,7 @@ export function HeroPortal({ scrollProgress, scrollTo }: HeroPortalProps) {
           }}
           aria-label="Scroll to News"
         >
-          <span className="portal-scroll-label font-mono">SCROLL</span>
+          <span className="portal-scroll-label font-mono">{hero.scrollCue}</span>
           <div className="portal-scroll-line">
             <span className="portal-scroll-runner" />
           </div>

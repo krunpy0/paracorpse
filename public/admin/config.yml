@@ -1,0 +1,83 @@
+backend:
+  name: github
+  repo: krunpy0/paracorpse
+  branch: main
+
+media_folder: "public/uploads"
+public_folder: "/paracorpse/uploads"
+
+collections:
+  - name: "settings"
+    label: "Site Content"
+    delete: false
+    files:
+      - name: "site_content"
+        label: "All Site Content"
+        file: "src/data/siteContent.json"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Scroll Cue", name: "scrollCue", widget: "string" }
+          - label: "Join Us Section"
+            name: "joinUs"
+            widget: "object"
+            fields:
+              - { label: "Enabled", name: "enabled", widget: "boolean", default: true }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "text" }
+              - { label: "Contact Email", name: "contactEmail", widget: "string" }
+              - label: "Audition Cards"
+                name: "cards"
+                widget: "list"
+                fields:
+                  - { label: "ID", name: "id", widget: "string" }
+                  - { label: "Role Title", name: "title", widget: "string" }
+                  - { label: "Subtitle", name: "subtitle", widget: "string" }
+                  - { label: "Sound & Style", name: "soundStyle", widget: "text" }
+                  - { label: "Requirements", name: "requirements", widget: "list" }
+                  - { label: "Button Text", name: "buttonText", widget: "string" }
+          - label: "About Section"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Lead Slogan", name: "lead", widget: "string" }
+              - { label: "Paragraphs", name: "paragraphs", widget: "list" }
+              - { label: "Members Section Title", name: "membersTitle", widget: "string" }
+              - label: "Members"
+                name: "members"
+                widget: "list"
+                fields:
+                  - { label: "ID", name: "id", widget: "string" }
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Role", name: "role", widget: "string" }
+                  - { label: "Photo", name: "photo", widget: "image" }
+                  - { label: "Description", name: "description", widget: "text" }
+          - label: "News"
+            name: "news"
+            widget: "list"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Preview Image", name: "previewImage", widget: "image" }
+              - { label: "Content", name: "content", widget: "text" }
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            fields:
+              - { label: "Wordmark", name: "wordmark", widget: "string" }
+              - { label: "Recruitment Title", name: "recruitmentTitle", widget: "string" }
+              - { label: "Contact Email", name: "contactEmail", widget: "string" }
+              - { label: "Location City", name: "locationCity", widget: "string" }
+              - { label: "Location Country", name: "locationCountry", widget: "string" }
+              - { label: "Copyright", name: "copyright", widget: "string" }
+              - label: "Social Links"
+                name: "socialLinks"
+                widget: "list"
+                fields:
+                  - { label: "ID", name: "id", widget: "string" }
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string" }

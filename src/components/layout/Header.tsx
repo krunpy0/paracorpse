@@ -1,11 +1,13 @@
 import { useState } from "react";
 import type { SectionId } from "../../types";
 import { Modal } from "../ui/Modal";
+import { SITE_CONTENT } from "../../data";
 
 interface HeaderProps {
   scrollProgress: number;
   activeSection: SectionId;
   scrollTo: (id: string) => void;
+  joinUsEnabled?: boolean;
 }
 
 interface NavItem {
@@ -13,16 +15,11 @@ interface NavItem {
   label: string;
 }
 
-const NAV_ITEMS: NavItem[] = [
-  { id: "news", label: "NEWS" },
-  { id: "join", label: "JOIN A BAND" },
-  { id: "about", label: "ABOUT US" },
-];
-
 export function Header({
   scrollProgress,
   activeSection,
   scrollTo,
+  joinUsEnabled = SITE_CONTENT.joinUs.enabled,
 }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -32,6 +29,12 @@ export function Header({
     scrollTo(sec);
     setMobileMenuOpen(false);
   };
+
+  const navItems: NavItem[] = [
+    { id: "news", label: "NEWS" },
+    ...(joinUsEnabled ? [{ id: "join" as SectionId, label: "JOIN A BAND" }] : []),
+    { id: "about", label: "ABOUT US" },
+  ];
 
   return (
     <>
@@ -44,7 +47,7 @@ export function Header({
         }}
       >
         <nav className="header-nav" aria-label="Main Navigation">
-          {NAV_ITEMS.map((item) => (
+          {navItems.map((item) => (
             <button
               key={item.id}
               onClick={() => handleNavClick(item.id)}
@@ -88,7 +91,7 @@ export function Header({
         <div
           style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}
         >
-          {NAV_ITEMS.map((item) => (
+          {navItems.map((item) => (
             <button
               key={item.id}
               onClick={() => handleNavClick(item.id)}

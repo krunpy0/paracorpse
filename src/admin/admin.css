@@ -1,0 +1,602 @@
+/* ==========================================================================
+   PARACORPSE ADMIN CMS — MONOLITHIC ARCHIVAL APPARATUS
+   Design System: strictly conforming to DESIGN.md
+   ========================================================================== */
+
+.admin-root {
+  min-height: 100vh;
+  background-color: var(--bg-primary, #060606);
+  color: var(--text-primary, #f5f5f3);
+  font-family: var(--font-ui, 'Inter', -apple-system, sans-serif);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   01. PERSISTENT TELEMETRY NAVBAR
+   -------------------------------------------------------------------------- */
+.admin-navbar {
+  background: rgba(6, 6, 6, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  padding: 0 2.5rem;
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.admin-brand {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.admin-logo {
+  font-family: var(--font-logo, 'Dirty Stains', 'Unbounded', sans-serif);
+  font-size: 1.35rem;
+  letter-spacing: 0.04em;
+  color: var(--text-primary, #f5f5f3);
+  text-transform: uppercase;
+}
+
+.admin-cms-tag {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  color: var(--text-muted, #5c5c5a);
+  text-transform: uppercase;
+  border-left: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  padding-left: 1rem;
+}
+
+.admin-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.admin-telemetry-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-secondary, #0d0d0e);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  padding: 6px 12px;
+  border-radius: 0px;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary, #a0a09e);
+  text-transform: uppercase;
+}
+
+.admin-user-avatar {
+  width: 18px;
+  height: 18px;
+  border-radius: 0px;
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  object-fit: cover;
+}
+
+/* --------------------------------------------------------------------------
+   02. TABS APPARATUS (MONOSPACE TELEMETRY)
+   -------------------------------------------------------------------------- */
+.admin-tabs-bar {
+  background: var(--bg-pure, #000000);
+  border-bottom: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  padding: 0 2.5rem;
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+}
+
+.admin-tab {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-muted, #5c5c5a);
+  padding: 1rem 1.25rem;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color var(--transition-fast, 0.18s ease), border-color var(--transition-fast, 0.18s ease);
+  border-radius: 0px;
+}
+
+.admin-tab:hover {
+  color: var(--text-secondary, #a0a09e);
+}
+
+.admin-tab.active {
+  color: var(--signal-white, #ffffff);
+  border-bottom: 2px solid var(--signal-white, #ffffff);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   03. MAIN LAYOUT CONTAINER
+   -------------------------------------------------------------------------- */
+.admin-container {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 3rem 2.5rem 8rem;
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .admin-navbar,
+  .admin-tabs-bar,
+  .admin-container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   04. SECTION HEADERS
+   -------------------------------------------------------------------------- */
+.admin-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  padding-bottom: 1.25rem;
+  gap: 1.5rem;
+}
+
+.admin-root h2,
+.admin-section-title {
+  font-family: var(--font-logo, 'Dirty Stains', 'Unbounded', sans-serif);
+  font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--text-primary, #f5f5f3);
+  line-height: 1;
+}
+
+.admin-section-subtitle {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--text-muted, #5c5c5a);
+  margin-top: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   05. MONOLITHIC CARDS & FORMS
+   -------------------------------------------------------------------------- */
+.admin-card {
+  background: var(--bg-secondary, #0d0d0e);
+  border: 1px solid var(--border-medium, rgba(255, 255, 255, 0.18));
+  border-radius: 0px;
+  padding: 2.5rem 2rem;
+  margin-bottom: 2rem;
+  transition: border-color var(--transition-fast, 0.18s ease);
+}
+
+.admin-card:hover {
+  border-color: var(--border-strong, rgba(255, 255, 255, 0.35));
+}
+
+.admin-card-title {
+  font-family: var(--font-display, 'Unbounded', sans-serif);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  color: var(--text-primary, #f5f5f3);
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  padding-bottom: 0.75rem;
+}
+
+.admin-form-group {
+  margin-bottom: 1.5rem;
+}
+
+.admin-form-group:last-child {
+  margin-bottom: 0;
+}
+
+.admin-label {
+  display: block;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-secondary, #a0a09e);
+  margin-bottom: 0.5rem;
+}
+
+.admin-input,
+.admin-textarea {
+  width: 100%;
+  background: var(--bg-pure, #000000);
+  border: 1px solid var(--border-medium, rgba(255, 255, 255, 0.18));
+  border-radius: 0px;
+  color: var(--text-primary, #f5f5f3);
+  padding: 12px 16px;
+  font-family: var(--font-ui, 'Inter', sans-serif);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  transition: border-color var(--transition-fast, 0.18s ease), background var(--transition-fast, 0.18s ease);
+  box-sizing: border-box;
+}
+
+.admin-input:focus,
+.admin-textarea:focus {
+  outline: none;
+  border-color: var(--signal-white, #ffffff);
+  background: var(--bg-primary, #060606);
+}
+
+.admin-textarea {
+  resize: vertical;
+  min-height: 90px;
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   06. BUTTONS (THE INVERSION CONTRAST RULE)
+   -------------------------------------------------------------------------- */
+/* Primary Action Trigger: Stark White Inversion */
+.btn-primary-action {
+  background: var(--text-primary, #f5f5f3);
+  color: var(--text-inverse, #060606);
+  border: 1px solid var(--text-primary, #f5f5f3);
+  border-radius: 0px;
+  padding: 14px 28px;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background var(--transition-fast, 0.18s ease), color var(--transition-fast, 0.18s ease), transform var(--transition-fast, 0.18s ease);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  line-height: 1;
+}
+
+.btn-primary-action:hover {
+  background: var(--signal-white, #ffffff);
+  color: var(--bg-pure, #000000);
+  border-color: var(--signal-white, #ffffff);
+  transform: translateY(-1px);
+}
+
+.btn-primary-action:active {
+  transform: translateY(0);
+}
+
+.btn-primary-action:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Secondary Button: Architectural Outline */
+.btn-secondary-action {
+  background: var(--bg-secondary, #0d0d0e);
+  color: var(--text-primary, #f5f5f3);
+  border: 1px solid var(--border-medium, rgba(255, 255, 255, 0.18));
+  border-radius: 0px;
+  padding: 10px 20px;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background var(--transition-fast, 0.18s ease), border-color var(--transition-fast, 0.18s ease), color var(--transition-fast, 0.18s ease);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.btn-secondary-action:hover {
+  background: var(--bg-tertiary, #141416);
+  border-color: var(--border-strong, rgba(255, 255, 255, 0.35));
+  color: var(--signal-white, #ffffff);
+}
+
+.btn-secondary-action:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Destructive / Remove Button: Stark Telemetry */
+.btn-sm-danger {
+  background: transparent;
+  color: var(--text-muted, #5c5c5a);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  border-radius: 0px;
+  padding: 8px 14px;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition-fast, 0.18s ease);
+  line-height: 1;
+}
+
+.btn-sm-danger:hover {
+  background: var(--bg-tertiary, #141416);
+  color: var(--signal-white, #ffffff);
+  border-color: var(--border-strong, rgba(255, 255, 255, 0.35));
+}
+
+/* --------------------------------------------------------------------------
+   07. BRUTALIST TOGGLE APPARATUS
+   -------------------------------------------------------------------------- */
+.brutalist-toggle-card {
+  background: var(--bg-secondary, #0d0d0e);
+  border: 1px solid var(--border-medium, rgba(255, 255, 255, 0.18));
+  border-radius: 0px;
+  padding: 1.75rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  transition: border-color var(--transition-fast, 0.18s ease);
+}
+
+.brutalist-toggle-card:hover {
+  border-color: var(--border-strong, rgba(255, 255, 255, 0.35));
+}
+
+.brutalist-toggle-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.brutalist-status-box {
+  width: 14px;
+  height: 14px;
+  border-radius: 0px;
+  border: 1px solid var(--border-strong, rgba(255, 255, 255, 0.35));
+  display: inline-block;
+  background: transparent;
+  position: relative;
+}
+
+.brutalist-status-box.active {
+  background: var(--signal-white, #ffffff);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.35);
+}
+
+/* --------------------------------------------------------------------------
+   08. RECTILINEAR PHOTO UPLOADER
+   -------------------------------------------------------------------------- */
+.photo-uploader-box {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  background: var(--bg-pure, #000000);
+  border: 1px dashed var(--border-medium, rgba(255, 255, 255, 0.18));
+  border-radius: 0px;
+  padding: 1.5rem;
+  transition: border-color var(--transition-fast, 0.18s ease);
+}
+
+.photo-uploader-box:hover {
+  border-color: var(--border-strong, rgba(255, 255, 255, 0.35));
+}
+
+.photo-preview-container {
+  width: 120px;
+  height: 120px;
+  border-radius: 0px;
+  overflow: hidden;
+  background: var(--bg-secondary, #0d0d0e);
+  flex-shrink: 0;
+  position: relative;
+  border: 1px solid var(--border-medium, rgba(255, 255, 255, 0.18));
+}
+
+.photo-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-upload-meta {
+  flex: 1;
+}
+
+.photo-upload-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-top: 0.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   09. MONOLITHIC FLOATING PUBLISH BAR
+   -------------------------------------------------------------------------- */
+.admin-publish-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(6, 6, 6, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border-medium, rgba(255, 255, 255, 0.18));
+  padding: 1rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 99;
+}
+
+.publish-bar-status {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+}
+
+.publish-square-signal {
+  width: 10px;
+  height: 10px;
+  border-radius: 0px;
+  border: 1px solid var(--border-strong, rgba(255, 255, 255, 0.35));
+  background: transparent;
+  display: inline-block;
+}
+
+.publish-square-signal.dirty {
+  background: var(--signal-white, #ffffff);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.45);
+}
+
+.publish-square-signal.busy {
+  background: var(--signal-white, #ffffff);
+  animation: signalPulse 0.8s infinite alternate ease-in-out;
+}
+
+@keyframes signalPulse {
+  0% { opacity: 0.2; }
+  100% { opacity: 1; }
+}
+
+/* --------------------------------------------------------------------------
+   10. LOGIN CHAMBER
+   -------------------------------------------------------------------------- */
+.admin-login-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.25rem;
+  background-color: var(--bg-pure, #000000);
+}
+
+.admin-login-card {
+  max-width: 560px;
+  width: 100%;
+  background: var(--bg-primary, #060606);
+  border: 1px solid var(--border-medium, rgba(255, 255, 255, 0.18));
+  border-radius: 0px;
+  padding: 3.5rem 3rem;
+}
+
+@media (max-width: 600px) {
+  .admin-login-card {
+    padding: 2rem 1.5rem;
+  }
+}
+
+.admin-login-header {
+  text-align: left;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  padding-bottom: 1.5rem;
+}
+
+.admin-login-title {
+  font-family: var(--font-logo, 'Dirty Stains', 'Unbounded', sans-serif);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--text-primary, #f5f5f3);
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+
+.admin-login-subtitle {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  color: var(--text-muted, #5c5c5a);
+  line-height: 1.6;
+}
+
+.admin-token-help {
+  background: var(--bg-secondary, #0d0d0e);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  border-radius: 0px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary, #a0a09e);
+  line-height: 1.6;
+}
+
+.admin-token-help ol {
+  margin: 0.75rem 0 0.75rem 1.25rem;
+  padding: 0;
+}
+
+.admin-token-help li {
+  margin-bottom: 0.5rem;
+}
+
+.admin-token-help a {
+  color: var(--signal-white, #ffffff);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   11. MONOCHROME TELEMETRY ALERTS
+   -------------------------------------------------------------------------- */
+.admin-alert {
+  padding: 1rem 1.5rem;
+  border-radius: 0px;
+  margin-bottom: 2rem;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--border-strong, rgba(255, 255, 255, 0.35));
+  background: var(--bg-secondary, #0d0d0e);
+  color: var(--text-primary, #f5f5f3);
+}
+
+.admin-alert.alert-error {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: var(--bg-tertiary, #141416);
+}
+
+.admin-alert.alert-success {
+  border-color: var(--signal-white, #ffffff);
+  background: var(--bg-surface, #1a1a1c);
+}
