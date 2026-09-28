@@ -97,6 +97,16 @@
         "id": "vk",
         "label": "VK",
         "url": "https://vk.ru/paracorpse"
+      },
+      {
+        "id": "social_1790611365457",
+        "label": "TELEGRAM",
+        "url": "https://t.me/paracorpseband"
+      },
+      {
+        "id": "social_1790611401003",
+        "label": "YOUTUBE",
+        "url": "https://www.youtube.com/@Paracorpse-band"
       }
     ]
   }
