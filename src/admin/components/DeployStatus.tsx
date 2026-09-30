@@ -58,14 +58,7 @@ export function DeployStatus({ token }: DeployStatusProps) {
 
         {status ? (
           <div>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-                gap: "1.25rem",
-                marginBottom: "2rem",
-              }}
-            >
+            <div className="admin-deploy-grid">
               <div
                 style={{
                   background: "var(--bg-pure)",
@@ -122,6 +115,7 @@ export function DeployStatus({ token }: DeployStatusProps) {
               target="_blank"
               rel="noopener noreferrer"
               className="btn-secondary-action"
+              style={{ width: "100%", maxWidth: "320px", textAlign: "center" }}
             >
               View build logs on GitHub ↗
             </a>
@@ -145,7 +139,7 @@ export function DeployStatus({ token }: DeployStatusProps) {
             href="https://krunpy0.github.io/paracorpse/"
             target="_blank"
             rel="noopener noreferrer"
-            style={{ color: "var(--signal-white)", textDecoration: "underline", textUnderlineOffset: "4px" }}
+            style={{ color: "var(--signal-white)", textDecoration: "underline", textUnderlineOffset: "4px", wordBreak: "break-all" }}
           >
             krunpy0.github.io/paracorpse/
           </a>{" "}

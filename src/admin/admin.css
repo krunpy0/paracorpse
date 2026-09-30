@@ -135,14 +135,7 @@
   flex: 1;
 }
 
-@media (max-width: 768px) {
-  .admin-navbar,
-  .admin-tabs-bar,
-  .admin-container {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
-}
+
 
 /* --------------------------------------------------------------------------
    04. SECTION HEADERS
@@ -522,11 +515,7 @@
   padding: 3rem 2.5rem;
 }
 
-@media (max-width: 600px) {
-  .admin-login-card {
-    padding: 2rem 1.25rem;
-  }
-}
+
 
 .admin-login-header {
   text-align: left;
@@ -610,3 +599,651 @@
   border-color: var(--signal-white, #ffffff);
   background: var(--bg-surface, #1a1a1c);
 }
+
+/* --------------------------------------------------------------------------
+   12. ARCHITECTURAL BASE CLASSES (DESKTOP FIDELITY DEFAULTS)
+   -------------------------------------------------------------------------- */
+.admin-nav-btn-mobile {
+  display: none;
+}
+
+.admin-nav-btn-text {
+  display: inline;
+}
+
+.admin-repo-name {
+  display: inline;
+}
+
+.admin-form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.admin-form-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.admin-form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.admin-subsection-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.admin-item-card {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.75rem 2rem;
+  margin: 0;
+}
+
+.admin-item-content {
+  display: flex;
+  gap: 1.75rem;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+}
+
+.admin-item-thumb {
+  width: 100px;
+  height: 70px;
+  object-fit: cover;
+  border: 1px solid var(--border-medium, rgba(255, 255, 255, 0.18));
+  border-radius: 0px;
+  flex-shrink: 0;
+}
+
+.admin-item-thumb-placeholder {
+  width: 100px;
+  height: 70px;
+  background: var(--bg-pure, #000000);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  border-radius: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted, #5c5c5a);
+  font-size: 0.72rem;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  flex-shrink: 0;
+}
+
+.admin-item-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.admin-item-headline {
+  font-family: var(--font-display, 'Unbounded', sans-serif);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-primary, #f5f5f3);
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+}
+
+.admin-item-snippet {
+  color: var(--text-secondary, #a0a09e);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.admin-item-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.admin-member-thumb {
+  width: 80px;
+  height: 100px;
+  object-fit: cover;
+  border: 1px solid var(--border-medium, rgba(255, 255, 255, 0.18));
+  border-radius: 0px;
+  flex-shrink: 0;
+}
+
+.admin-member-thumb-placeholder {
+  width: 80px;
+  height: 100px;
+  background: var(--bg-pure, #000000);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  border-radius: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted, #5c5c5a);
+  font-size: 0.72rem;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  flex-shrink: 0;
+}
+
+.admin-member-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.admin-role-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.admin-role-title {
+  font-family: var(--font-logo, 'Dirty Stains', 'Unbounded', sans-serif);
+  font-size: 1.6rem;
+  color: var(--text-primary, #f5f5f3);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.25rem;
+}
+
+.admin-role-subtitle {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.75rem;
+  color: var(--text-muted, #5c5c5a);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.admin-role-meta {
+  color: var(--text-secondary, #a0a09e);
+  font-size: 0.8rem;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+}
+
+.admin-requirement-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  align-items: center;
+}
+
+.admin-paragraph-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  align-items: flex-start;
+}
+
+.admin-delete-row-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  padding: 0;
+  cursor: pointer;
+}
+
+.admin-social-row {
+  display: grid;
+  grid-template-columns: 220px 1fr 48px;
+  gap: 1rem;
+  align-items: center;
+}
+
+.admin-deploy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.publish-bar-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* --------------------------------------------------------------------------
+   13. COMPREHENSIVE RESPONSIVE MOBILE ADAPTATION (SCREEN <= 768px)
+   Strictly scoped to mobile devices: desktops remain completely untouched
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  /* Prevent iOS Safari automatic zoom on form input focus */
+  .admin-input,
+  .admin-textarea {
+    font-size: 16px !important;
+    padding: 12px 14px;
+  }
+
+  /* 01. Compact Mobile Header Navbar */
+  .admin-navbar {
+    height: 54px;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .admin-brand,
+  .admin-logo,
+  .admin-cms-tag {
+    display: none !important;
+  }
+
+  .admin-nav-actions {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+  }
+
+  .admin-telemetry-badge {
+    margin-right: auto;
+    padding: 5px 10px;
+    font-size: 0.72rem;
+    gap: 0.45rem;
+    max-width: 160px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .admin-user-avatar {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  .admin-user-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 110px;
+  }
+
+  .admin-repo-name {
+    display: none;
+  }
+
+  .admin-nav-btn {
+    padding: 7px 12px;
+    font-size: 0.72rem;
+    min-height: 36px;
+    flex-shrink: 0;
+  }
+
+  .admin-nav-btn-text {
+    display: none;
+  }
+
+  .admin-nav-btn-mobile {
+    display: inline;
+  }
+
+  /* 02. Smooth Swipe Horizontal Tabs (Scrollbar Hidden, Touch-Optimized) */
+  .admin-tabs-bar {
+    padding: 0 0.6rem;
+    gap: 0.2rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .admin-tabs-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .admin-tab {
+    padding: 0.75rem 0.8rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  /* 03. Container Spacing with Safe Area Clearance */
+  .admin-container {
+    padding: 1.25rem 0.85rem calc(10.5rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* 04. Section & Subsection Headers */
+  .admin-section-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.85rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .admin-section-header .btn-primary-action {
+    width: 100%;
+    min-height: 44px;
+    padding: 12px 16px;
+  }
+
+  .admin-root h2,
+  .admin-section-title {
+    font-size: 1.65rem;
+    line-height: 1.1;
+  }
+
+  .admin-section-subtitle {
+    font-size: 0.75rem;
+    margin-top: 0.35rem;
+  }
+
+  .admin-subsection-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .admin-subsection-header .btn-primary-action,
+  .admin-subsection-header .btn-secondary-action {
+    width: 100%;
+    min-height: 42px;
+  }
+
+  /* 05. Monolithic Cards & Form Layouts */
+  .admin-card {
+    padding: 1.25rem 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .admin-card-title {
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .admin-form-grid-2,
+  .admin-form-grid-3 {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .admin-form-actions {
+    flex-direction: column;
+    gap: 0.65rem;
+    margin-top: 1.5rem;
+  }
+
+  .admin-form-actions .btn-primary-action,
+  .admin-form-actions .btn-secondary-action {
+    width: 100%;
+    min-height: 46px;
+  }
+
+  /* 06. Content Cards (News, Members, Audition Roles) */
+  .admin-item-card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    padding: 1.25rem 1rem;
+  }
+
+  .admin-item-content {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.85rem;
+    width: 100%;
+  }
+
+  .admin-item-thumb,
+  .admin-item-thumb-placeholder {
+    width: 72px;
+    height: 54px;
+    font-size: 0.65rem;
+  }
+
+  .admin-member-thumb,
+  .admin-member-thumb-placeholder {
+    width: 60px;
+    height: 75px;
+    font-size: 0.65rem;
+  }
+
+  .admin-item-headline {
+    font-size: 0.98rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .admin-item-snippet {
+    font-size: 0.8rem;
+    line-height: 1.45;
+  }
+
+  .admin-member-header {
+    flex-wrap: wrap;
+    gap: 0.35rem 0.6rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .admin-role-title {
+    font-size: 1.35rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .admin-role-subtitle {
+    font-size: 0.72rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .admin-role-meta {
+    font-size: 0.74rem;
+  }
+
+  .admin-item-actions {
+    width: 100%;
+    border-top: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+    padding-top: 0.75rem;
+    gap: 0.6rem;
+    display: flex;
+  }
+
+  .admin-item-actions .btn-secondary-action,
+  .admin-item-actions .btn-sm-danger {
+    flex: 1;
+    min-height: 42px;
+    justify-content: center;
+    font-size: 0.74rem;
+  }
+
+  /* 07. Brutalist Toggle Card */
+  .brutalist-toggle-card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    padding: 1.25rem 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .brutalist-toggle-card .btn-secondary-action {
+    width: 100%;
+    min-height: 44px;
+    justify-content: center;
+  }
+
+  /* 08. Photo Uploader Apparatus */
+  .photo-uploader-box {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    padding: 1.25rem 1rem;
+  }
+
+  .photo-preview-container {
+    width: 100px;
+    height: 100px;
+  }
+
+  .photo-upload-meta {
+    width: 100%;
+  }
+
+  .photo-upload-actions {
+    display: flex;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .photo-upload-actions .btn-secondary-action,
+  .photo-upload-actions .btn-sm-danger {
+    flex: 1;
+    min-height: 42px;
+    justify-content: center;
+  }
+
+  /* 09. Social Links Row */
+  .admin-social-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    background: var(--bg-pure, #000000);
+    border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+    padding: 0.85rem;
+  }
+
+  .admin-social-row .admin-input {
+    width: 100%;
+  }
+
+  .admin-social-row .admin-delete-row-btn {
+    width: 100%;
+    min-height: 40px;
+  }
+
+  /* 10. Requirement & Paragraph Rows */
+  .admin-requirement-row,
+  .admin-paragraph-row {
+    gap: 0.5rem;
+  }
+
+  .admin-delete-row-btn {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+  }
+
+  /* 11. Deploy Grid */
+  .admin-deploy-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+    margin-bottom: 1.25rem;
+  }
+
+  /* 12. Floating Action Bar */
+  .admin-publish-bar {
+    padding: 0.75rem 1rem max(0.85rem, env(safe-area-inset-bottom, 0px));
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.7);
+  }
+
+  .publish-bar-status {
+    font-size: 0.72rem;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .publish-bar-actions {
+    display: flex;
+    gap: 0.6rem;
+    width: 100%;
+  }
+
+  .publish-btn-discard {
+    flex: 1;
+    min-height: 44px;
+    padding: 10px 12px;
+  }
+
+  .publish-btn-save {
+    flex: 2;
+    min-height: 44px;
+    padding: 12px 16px;
+  }
+
+  /* 13. Alerts & Login */
+  .admin-alert {
+    padding: 0.85rem 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .admin-login-wrapper {
+    padding: 1.25rem 0.85rem;
+  }
+
+  .admin-login-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .admin-login-title {
+    font-size: 1.6rem;
+  }
+
+  .admin-token-help {
+    padding: 1rem;
+    font-size: 0.72rem;
+  }
+
+  .admin-token-help a {
+    word-break: break-all;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   14. ULTRA-NARROW DEVICES (SCREEN <= 400px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 400px) {
+  .admin-navbar {
+    padding: 0 0.75rem;
+  }
+
+  .admin-nav-actions {
+    gap: 0.35rem;
+  }
+
+  .admin-telemetry-badge {
+    padding: 4px 8px;
+    font-size: 0.68rem;
+    max-width: 130px;
+  }
+
+  .admin-user-name {
+    max-width: 85px;
+  }
+
+  .admin-nav-btn {
+    padding: 6px 9px;
+    font-size: 0.7rem;
+  }
+
+  .admin-tab {
+    padding: 0.7rem 0.65rem;
+    font-size: 0.68rem;
+  }
+}
+

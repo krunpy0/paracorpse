@@ -166,12 +166,7 @@ export function AboutManager({
           {about.paragraphs.map((p, idx) => (
             <div
               key={idx}
-              style={{
-                display: "flex",
-                gap: "0.75rem",
-                marginBottom: "1rem",
-                alignItems: "flex-start",
-              }}
+              className="admin-paragraph-row"
             >
               <textarea
                 className="admin-textarea"
@@ -182,9 +177,9 @@ export function AboutManager({
               />
               <button
                 type="button"
-                className="btn-sm-danger"
-                style={{ marginTop: "4px" }}
+                className="btn-sm-danger admin-delete-row-btn"
                 onClick={() => handleRemoveParagraph(idx)}
+                aria-label="Remove paragraph"
               >
                 ×
               </button>
@@ -203,13 +198,7 @@ export function AboutManager({
           </h3>
 
           <form onSubmit={saveMemberEdit}>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: "1.5rem",
-              }}
-            >
+            <div className="admin-form-grid-2">
               <div className="admin-form-group">
                 <label className="admin-label">Name</label>
                 <input
@@ -264,7 +253,7 @@ export function AboutManager({
               }
             />
 
-            <div style={{ display: "flex", gap: "1rem", marginTop: "2rem" }}>
+            <div className="admin-form-actions">
               <button type="submit" className="btn-primary-action">
                 Save Member
               </button>
@@ -282,14 +271,7 @@ export function AboutManager({
 
       {/* MEMBERS LIST */}
       <div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginBottom: "1.5rem",
-          }}
-        >
+        <div className="admin-subsection-header">
           <div>
             <h3
               style={{
@@ -298,6 +280,7 @@ export function AboutManager({
                 fontWeight: 800,
                 textTransform: "uppercase",
                 color: "var(--text-primary)",
+                margin: 0,
               }}
             >
               Members ({about.members.length})
@@ -332,81 +315,35 @@ export function AboutManager({
             return (
               <div
                 key={member.id}
-                className="admin-card"
-                style={{
-                  display: "flex",
-                  gap: "2rem",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  padding: "1.75rem 2rem",
-                  margin: 0,
-                }}
+                className="admin-card admin-item-card"
               >
-                <div style={{ display: "flex", gap: "1.75rem", alignItems: "center", flex: 1 }}>
+                <div className="admin-item-content">
                   {photoUrl ? (
                     <img
                       src={photoUrl}
                       alt={member.name}
-                      style={{
-                        width: "80px",
-                        height: "100px",
-                        objectFit: "cover",
-                        border: "1px solid var(--border-medium)",
-                        borderRadius: "0px",
-                      }}
+                      className="admin-member-thumb"
                     />
                   ) : (
-                    <div
-                      style={{
-                        width: "80px",
-                        height: "100px",
-                        background: "var(--bg-pure)",
-                        border: "1px solid var(--border-subtle)",
-                        borderRadius: "0px",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        color: "var(--text-muted)",
-                        fontSize: "0.72rem",
-                        fontFamily: "var(--font-mono)",
-                      }}
-                    >
+                    <div className="admin-member-thumb-placeholder">
                       No photo
                     </div>
                   )}
 
-                  <div style={{ flex: 1 }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "0.5rem" }}>
-                      <h4
-                        style={{
-                          fontFamily: "var(--font-display)",
-                          fontSize: "1.15rem",
-                          fontWeight: 800,
-                          color: "var(--text-primary)",
-                          textTransform: "uppercase",
-                        }}
-                      >
+                  <div className="admin-item-text">
+                    <div className="admin-member-header">
+                      <h4 className="admin-item-headline">
                         {member.name}
                       </h4>
                       <span className="admin-telemetry-badge">{member.role}</span>
                     </div>
-                    <p
-                      style={{
-                        color: "var(--text-secondary)",
-                        fontSize: "0.85rem",
-                        lineHeight: "1.5",
-                        display: "-webkit-box",
-                        WebkitLineClamp: 2,
-                        WebkitBoxOrient: "vertical",
-                        overflow: "hidden",
-                      }}
-                    >
+                    <p className="admin-item-snippet">
                       {member.description}
                     </p>
                   </div>
                 </div>
 
-                <div style={{ display: "flex", gap: "0.75rem" }}>
+                <div className="admin-item-actions">
                   <button
                     type="button"
                     className="btn-secondary-action"

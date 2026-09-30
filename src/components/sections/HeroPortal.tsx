@@ -9,7 +9,7 @@ interface HeroPortalProps {
 
 export function HeroPortal({
   scrollProgress,
-  scrollTo,
+  scrollTo: _scrollTo,
   hero = SITE_CONTENT.hero,
 }: HeroPortalProps) {
   // Gentle parallax and subtle fade as the content sheet slides up over the hero
@@ -43,26 +43,6 @@ export function HeroPortal({
           }}
         >
           <h1 className="portal-logo-text font-logo">{hero.title}</h1>
-        </div>
-
-        {/* Minimal Scroll Cue */}
-        <div
-          className="portal-scroll-indicator"
-          style={{
-            opacity: Math.max(1 - scrollProgress * 2.8, 0),
-          }}
-          onClick={() => scrollTo("news")}
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") scrollTo("news");
-          }}
-          aria-label="Scroll to News"
-        >
-          <span className="portal-scroll-label font-mono">{hero.scrollCue}</span>
-          <div className="portal-scroll-line">
-            <span className="portal-scroll-runner" />
-          </div>
         </div>
       </div>
     </div>

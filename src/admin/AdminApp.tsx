@@ -219,31 +219,36 @@ export function AdminApp({ onBackToSite }: AdminAppProps) {
                 alt="avatar"
                 className="admin-user-avatar"
               />
-              <span>{authStatus.username}</span>
-              <span style={{ color: "var(--text-muted)" }}>{config.owner}/{config.repo}</span>
+              <span className="admin-user-name">{authStatus.username}</span>
+              <span className="admin-repo-name" style={{ color: "var(--text-muted)" }}>
+                {config.owner}/{config.repo}
+              </span>
             </div>
           )}
 
           {onBackToSite ? (
             <button
               type="button"
-              className="btn-secondary-action"
+              className="btn-secondary-action admin-nav-btn"
               onClick={onBackToSite}
             >
-              ← Back to site
+              <span className="admin-nav-btn-text">← Back to site</span>
+              <span className="admin-nav-btn-mobile">← Site</span>
             </button>
           ) : (
-            <a href="#/" className="btn-secondary-action">
-              ← Back to site
+            <a href="#/" className="btn-secondary-action admin-nav-btn">
+              <span className="admin-nav-btn-text">← Back to site</span>
+              <span className="admin-nav-btn-mobile">← Site</span>
             </a>
           )}
 
           <button
             type="button"
-            className="btn-secondary-action"
+            className="btn-secondary-action admin-nav-btn"
             onClick={handleLogout}
           >
-            Sign Out
+            <span className="admin-nav-btn-text">Sign Out</span>
+            <span className="admin-nav-btn-mobile">Exit</span>
           </button>
         </div>
       </header>
@@ -363,7 +368,7 @@ export function AdminApp({ onBackToSite }: AdminAppProps) {
               isPublishing ? "busy" : isDirty ? "dirty" : ""
             }`}
           />
-          <span>
+          <span className="publish-status-label">
             {isPublishing
               ? publishMessage || "Saving changes to repository..."
               : isDirty
@@ -372,11 +377,11 @@ export function AdminApp({ onBackToSite }: AdminAppProps) {
           </span>
         </div>
 
-        <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+        <div className="publish-bar-actions">
           {isDirty && !isPublishing && (
             <button
               type="button"
-              className="btn-secondary-action"
+              className="btn-secondary-action publish-btn-discard"
               onClick={() => {
                 if (confirm("Discard all unsaved changes?")) {
                   setWorkingContent(JSON.parse(initialJson));
@@ -391,7 +396,7 @@ export function AdminApp({ onBackToSite }: AdminAppProps) {
 
           <button
             type="button"
-            className="btn-primary-action"
+            className="btn-primary-action publish-btn-save"
             disabled={!isDirty || isPublishing}
             onClick={handlePublish}
           >

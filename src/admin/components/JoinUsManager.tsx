@@ -205,13 +205,7 @@ export function JoinUsManager({ joinUs, onChange }: JoinUsManagerProps) {
           </h3>
 
           <form onSubmit={saveCardEdit}>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: "1.5rem",
-              }}
-            >
+            <div className="admin-form-grid-2">
               <div className="admin-form-group">
                 <label className="admin-label">Role Title</label>
                 <input
@@ -277,11 +271,7 @@ export function JoinUsManager({ joinUs, onChange }: JoinUsManagerProps) {
               {editingCard.requirements.map((req, idx) => (
                 <div
                   key={idx}
-                  style={{
-                    display: "flex",
-                    gap: "0.75rem",
-                    marginBottom: "0.75rem",
-                  }}
+                  className="admin-requirement-row"
                 >
                   <input
                     type="text"
@@ -294,8 +284,9 @@ export function JoinUsManager({ joinUs, onChange }: JoinUsManagerProps) {
                   />
                   <button
                     type="button"
-                    className="btn-sm-danger"
+                    className="btn-sm-danger admin-delete-row-btn"
                     onClick={() => handleRemoveRequirement(idx)}
+                    aria-label="Remove requirement"
                   >
                     ×
                   </button>
@@ -316,7 +307,7 @@ export function JoinUsManager({ joinUs, onChange }: JoinUsManagerProps) {
               />
             </div>
 
-            <div style={{ display: "flex", gap: "1rem", marginTop: "2rem" }}>
+            <div className="admin-form-actions">
               <button type="submit" className="btn-primary-action">
                 Save Role
               </button>
@@ -334,14 +325,7 @@ export function JoinUsManager({ joinUs, onChange }: JoinUsManagerProps) {
 
       {/* CARDS LIST */}
       <div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginBottom: "1.5rem",
-          }}
-        >
+        <div className="admin-subsection-header">
           <h3
             style={{
               fontFamily: "var(--font-display)",
@@ -349,6 +333,7 @@ export function JoinUsManager({ joinUs, onChange }: JoinUsManagerProps) {
               fontWeight: 800,
               textTransform: "uppercase",
               color: "var(--text-primary)",
+              margin: 0,
             }}
           >
             Roles ({joinUs.cards.length})
@@ -368,51 +353,21 @@ export function JoinUsManager({ joinUs, onChange }: JoinUsManagerProps) {
           {joinUs.cards.map((card) => (
             <div
               key={card.id}
-              className="admin-card"
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                padding: "2rem",
-                margin: 0,
-              }}
+              className="admin-card admin-item-card"
             >
-              <div>
-                <h4
-                  style={{
-                    fontFamily: "var(--font-logo)",
-                    fontSize: "1.6rem",
-                    color: "var(--text-primary)",
-                    letterSpacing: "0.02em",
-                    marginBottom: "0.25rem",
-                  }}
-                >
+              <div className="admin-role-info">
+                <h4 className="admin-role-title">
                   {card.title}
                 </h4>
-                <div
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "0.75rem",
-                    color: "var(--text-muted)",
-                    letterSpacing: "0.1em",
-                    textTransform: "uppercase",
-                    marginBottom: "0.5rem",
-                  }}
-                >
+                <div className="admin-role-subtitle">
                   {card.subtitle}
                 </div>
-                <div
-                  style={{
-                    color: "var(--text-secondary)",
-                    fontSize: "0.8rem",
-                    fontFamily: "var(--font-mono)",
-                  }}
-                >
+                <div className="admin-role-meta">
                   {card.requirements.length} requirements · {card.buttonText}
                 </div>
               </div>
 
-              <div style={{ display: "flex", gap: "0.75rem" }}>
+              <div className="admin-item-actions">
                 <button
                   type="button"
                   className="btn-secondary-action"

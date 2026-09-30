@@ -63,13 +63,7 @@ export function GeneralManager({
       <div className="admin-card">
         <h3 className="admin-card-title">Hero</h3>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "1.5rem",
-          }}
-        >
+        <div className="admin-form-grid-2">
           <div className="admin-form-group">
             <label className="admin-label">Hero Title</label>
             <input
@@ -98,13 +92,7 @@ export function GeneralManager({
       <div className="admin-card">
         <h3 className="admin-card-title">Footer &amp; Contacts</h3>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "1.5rem",
-          }}
-        >
+        <div className="admin-form-grid-2">
           <div className="admin-form-group">
             <label className="admin-label">Footer Title</label>
             <input
@@ -130,13 +118,7 @@ export function GeneralManager({
           </div>
         </div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr 1fr",
-            gap: "1.5rem",
-          }}
-        >
+        <div className="admin-form-grid-3">
           <div className="admin-form-group">
             <label className="admin-label">Contact Email</label>
             <input
@@ -191,14 +173,7 @@ export function GeneralManager({
 
       {/* SOCIAL LINKS */}
       <div className="admin-card">
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginBottom: "1.5rem",
-          }}
-        >
+        <div className="admin-subsection-header">
           <h3 className="admin-card-title" style={{ margin: 0, border: "none", padding: 0 }}>
             Social Links ({footer.socialLinks.length})
           </h3>
@@ -215,12 +190,7 @@ export function GeneralManager({
           {footer.socialLinks.map((link, idx) => (
             <div
               key={link.id}
-              style={{
-                display: "grid",
-                gridTemplateColumns: "220px 1fr 48px",
-                gap: "1rem",
-                alignItems: "center",
-              }}
+              className="admin-social-row"
             >
               <input
                 type="text"
@@ -229,7 +199,7 @@ export function GeneralManager({
                 onChange={(e) =>
                   handleUpdateSocialLink(idx, "label", e.target.value)
                 }
-                placeholder="Channel (e.g. TikTok)"
+                placeholder="Channel (e.g. VK)"
               />
               <input
                 type="url"
@@ -242,9 +212,9 @@ export function GeneralManager({
               />
               <button
                 type="button"
-                className="btn-sm-danger"
-                style={{ padding: "12px", textAlign: "center" }}
+                className="btn-sm-danger admin-delete-row-btn"
                 onClick={() => handleRemoveSocialLink(idx)}
+                aria-label="Remove link"
               >
                 ×
               </button>

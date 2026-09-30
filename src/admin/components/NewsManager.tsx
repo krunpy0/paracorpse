@@ -145,7 +145,7 @@ export function NewsManager({
               }
             />
 
-            <div style={{ display: "flex", gap: "1rem", marginTop: "2rem" }}>
+            <div className="admin-form-actions">
               <button type="submit" className="btn-primary-action">
                 Save Post
               </button>
@@ -185,80 +185,32 @@ export function NewsManager({
             return (
               <div
                 key={item.id}
-                className="admin-card"
-                style={{
-                  display: "flex",
-                  gap: "2rem",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  padding: "1.75rem 2rem",
-                  margin: 0,
-                }}
+                className="admin-card admin-item-card"
               >
-                <div style={{ display: "flex", gap: "1.75rem", alignItems: "center", flex: 1 }}>
+                <div className="admin-item-content">
                   {imgUrl ? (
                     <img
                       src={imgUrl}
                       alt={item.headline}
-                      style={{
-                        width: "100px",
-                        height: "70px",
-                        objectFit: "cover",
-                        border: "1px solid var(--border-medium)",
-                        borderRadius: "0px",
-                      }}
+                      className="admin-item-thumb"
                     />
                   ) : (
-                    <div
-                      style={{
-                        width: "100px",
-                        height: "70px",
-                        background: "var(--bg-pure)",
-                        border: "1px solid var(--border-subtle)",
-                        borderRadius: "0px",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        color: "var(--text-muted)",
-                        fontSize: "0.72rem",
-                        fontFamily: "var(--font-mono)",
-                      }}
-                    >
+                    <div className="admin-item-thumb-placeholder">
                       No photo
                     </div>
                   )}
 
-                  <div style={{ flex: 1 }}>
-                    <h4
-                      style={{
-                        fontFamily: "var(--font-display)",
-                        fontSize: "1.1rem",
-                        fontWeight: 800,
-                        color: "var(--text-primary)",
-                        marginBottom: "0.4rem",
-                        letterSpacing: "-0.015em",
-                        textTransform: "uppercase",
-                      }}
-                    >
+                  <div className="admin-item-text">
+                    <h4 className="admin-item-headline">
                       {item.headline}
                     </h4>
-                    <p
-                      style={{
-                        color: "var(--text-secondary)",
-                        fontSize: "0.88rem",
-                        lineHeight: "1.5",
-                        display: "-webkit-box",
-                        WebkitLineClamp: 2,
-                        WebkitBoxOrient: "vertical",
-                        overflow: "hidden",
-                      }}
-                    >
+                    <p className="admin-item-snippet">
                       {item.content}
                     </p>
                   </div>
                 </div>
 
-                <div style={{ display: "flex", gap: "0.75rem" }}>
+                <div className="admin-item-actions">
                   <button
                     type="button"
                     className="btn-secondary-action"

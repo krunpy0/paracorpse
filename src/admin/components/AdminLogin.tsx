@@ -127,7 +127,7 @@ export function AdminLogin({ onSuccess }: AdminLoginProps) {
                 marginBottom: "1.5rem",
               }}
             >
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
+              <div className="admin-form-grid-2">
                 <div>
                   <label className="admin-label">Owner</label>
                   <input
