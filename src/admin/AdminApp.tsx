@@ -354,6 +354,7 @@ export function AdminApp({ onBackToSite }: AdminAppProps) {
             footer={workingContent.footer}
             onHeroChange={handleHeroChange}
             onFooterChange={handleFooterChange}
+            onRegisterPendingPhoto={handleRegisterPendingPhoto}
           />
         )}
 

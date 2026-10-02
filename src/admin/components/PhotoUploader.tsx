@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { resolveMediaUrl } from "../../data";
 import {
   optimizeAndEncodeImage,
@@ -10,6 +10,9 @@ interface PhotoUploaderProps {
   label: string;
   onPhotoSelected: (result: OptimizedImageResult) => void;
   onPhotoRemoved?: () => void;
+  aspectRatio?: "square" | "wide";
+  maxDimension?: number;
+  hint?: string;
 }
 
 export function PhotoUploader({
@@ -17,11 +20,24 @@ export function PhotoUploader({
   label,
   onPhotoSelected,
   onPhotoRemoved,
+  aspectRatio = "square",
+  maxDimension = 1600,
+  hint,
 }: PhotoUploaderProps) {
   const [isProcessing, setIsProcessing] = useState(false);
   const [localPreview, setLocalPreview] = useState<string | null>(null);
   const [infoText, setInfoText] = useState<string>("");
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (!currentPhotoUrl) {
+      setLocalPreview(null);
+      setInfoText("");
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
+    }
+  }, [currentPhotoUrl]);
 
   const displayUrl = localPreview || (currentPhotoUrl ? resolveMediaUrl(currentPhotoUrl) : "");
 
@@ -34,7 +50,7 @@ export function PhotoUploader({
     try {
       setIsProcessing(true);
       setInfoText("Optimizing photo...");
-      const result = await optimizeAndEncodeImage(file);
+      const result = await optimizeAndEncodeImage(file, maxDimension);
       setLocalPreview(result.dataUrl);
       setInfoText(`Optimized: ${(result.sizeBytes / 1024).toFixed(0)} KB`);
       onPhotoSelected(result);
@@ -71,7 +87,11 @@ export function PhotoUploader({
         onDragOver={(e) => e.preventDefault()}
         onDrop={handleDrop}
       >
-        <div className="photo-preview-container">
+        <div
+          className={`photo-preview-container ${
+            aspectRatio === "wide" ? "photo-preview-wide" : ""
+          }`}
+        >
           {displayUrl ? (
             <img
               src={displayUrl}
@@ -146,7 +166,7 @@ export function PhotoUploader({
               fontFamily: "var(--font-mono)",
             }}
           >
-            {infoText || "Drag and drop photo here or choose file"}
+            {infoText || hint || "Drag and drop photo here or choose file"}
           </div>
         </div>
       </div>

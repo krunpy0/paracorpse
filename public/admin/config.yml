@@ -21,6 +21,7 @@ collections:
             fields:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Scroll Cue", name: "scrollCue", widget: "string" }
+              - { label: "Background Image", name: "backgroundImage", widget: "image", required: false }
           - label: "Join Us Section"
             name: "joinUs"
             widget: "object"

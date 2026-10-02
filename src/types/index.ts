@@ -76,6 +76,7 @@ export interface AboutContent {
 export interface HeroContent {
   title: string;
   scrollCue: string;
+  backgroundImage?: string;
 }
 
 export interface SocialLink {

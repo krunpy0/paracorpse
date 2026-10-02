@@ -1,10 +1,13 @@
 import type { HeroContent, FooterContent, SocialLink } from "../../types";
+import { PhotoUploader } from "./PhotoUploader";
+import type { OptimizedImageResult } from "../utils/imageOptimizer";
 
 interface GeneralManagerProps {
   hero: HeroContent;
   footer: FooterContent;
   onHeroChange: (updatedHero: HeroContent) => void;
   onFooterChange: (updatedFooter: FooterContent) => void;
+  onRegisterPendingPhoto: (photo: OptimizedImageResult) => void;
 }
 
 export function GeneralManager({
@@ -12,9 +15,15 @@ export function GeneralManager({
   footer,
   onHeroChange,
   onFooterChange,
+  onRegisterPendingPhoto,
 }: GeneralManagerProps) {
   const handleHeroField = (field: keyof HeroContent, value: string) => {
     onHeroChange({ ...hero, [field]: value });
+  };
+
+  const handleHeroPhotoSelected = (result: OptimizedImageResult) => {
+    onRegisterPendingPhoto(result);
+    handleHeroField("backgroundImage", `/uploads/${result.fileName}`);
   };
 
   const handleFooterField = (field: keyof FooterContent, value: any) => {
@@ -54,7 +63,7 @@ export function GeneralManager({
         <div>
           <h2 className="admin-section-title">General &amp; Footer</h2>
           <p className="admin-section-subtitle">
-            Hero text, social links, location, and copyright
+            Hero image and text, social links, location, and copyright
           </p>
         </div>
       </div>
@@ -84,6 +93,72 @@ export function GeneralManager({
               onChange={(e) => handleHeroField("scrollCue", e.target.value)}
               placeholder="SCROLL"
             />
+          </div>
+        </div>
+
+        {/* Hero Background Image */}
+        <div style={{ marginTop: "1.5rem" }}>
+          <PhotoUploader
+            label="Hero Background Image"
+            currentPhotoUrl={hero.backgroundImage}
+            aspectRatio="wide"
+            maxDimension={1920}
+            hint="Upload concert / stage background (JPG, PNG, WebP)"
+            onPhotoSelected={handleHeroPhotoSelected}
+            onPhotoRemoved={() => handleHeroField("backgroundImage", "")}
+          />
+
+          <div className="admin-form-group" style={{ marginTop: "1rem" }}>
+            <label className="admin-label">Image Path / URL (Optional)</label>
+            <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
+              <input
+                type="text"
+                className="admin-input"
+                value={hero.backgroundImage || ""}
+                onChange={(e) => handleHeroField("backgroundImage", e.target.value)}
+                placeholder="e.g. /uploads/photo.jpg or /assets/live-stage.jpg or https://..."
+                style={{ flex: 1 }}
+              />
+              {hero.backgroundImage && (
+                <button
+                  type="button"
+                  className="btn-sm-danger"
+                  style={{ height: "42px", padding: "0 1rem" }}
+                  onClick={() => handleHeroField("backgroundImage", "")}
+                >
+                  Clear
+                </button>
+              )}
+            </div>
+            <div
+              style={{
+                display: "flex",
+                gap: "0.5rem",
+                marginTop: "0.5rem",
+                alignItems: "center",
+                flexWrap: "wrap",
+              }}
+            >
+              <span
+                style={{
+                  fontSize: "0.72rem",
+                  color: "var(--text-muted)",
+                  fontFamily: "var(--font-mono)",
+                }}
+              >
+                Preset:
+              </span>
+              <button
+                type="button"
+                className="btn-secondary-action"
+                style={{ padding: "0.25rem 0.6rem", fontSize: "0.72rem" }}
+                onClick={() =>
+                  handleHeroField("backgroundImage", "/assets/live-stage.jpg")
+                }
+              >
+                /assets/live-stage.jpg
+              </button>
+            </div>
           </div>
         </div>
       </div>

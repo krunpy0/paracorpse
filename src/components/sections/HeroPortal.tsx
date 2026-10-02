@@ -1,5 +1,5 @@
 import type { HeroContent } from "../../types";
-import { SITE_CONTENT } from "../../data";
+import { SITE_CONTENT, resolveMediaUrl } from "../../data";
 
 interface HeroPortalProps {
   scrollProgress: number;
@@ -16,6 +16,7 @@ export function HeroPortal({
   const textTranslateY = scrollProgress * 50;
   const textOpacity = Math.max(1 - scrollProgress * 1.15, 0);
   const bgScale = 1 + scrollProgress * 0.05;
+  const bgUrl = hero.backgroundImage ? resolveMediaUrl(hero.backgroundImage) : "";
 
   return (
     <div className="portal-wrapper" id="portal">
@@ -24,6 +25,7 @@ export function HeroPortal({
         <div
           className="portal-bg-layer"
           style={{
+            backgroundImage: bgUrl ? `url("${bgUrl}")` : undefined,
             transform: `scale(${bgScale})`,
           }}
         />
