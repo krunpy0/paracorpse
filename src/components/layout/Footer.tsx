@@ -5,24 +5,15 @@ interface FooterProps {
   scrollTo: (id: string) => void;
   footer?: FooterContent;
   joinUs?: JoinUsContent;
-  onOpenAdmin?: () => void;
 }
 
 export function Footer({
   scrollTo,
   footer = SITE_CONTENT.footer,
   joinUs = SITE_CONTENT.joinUs,
-  onOpenAdmin,
 }: FooterProps) {
   const currentYear = new Date().getFullYear();
   const isJoinEnabled = joinUs?.enabled ?? true;
-
-  const handleAdminClick = (e: React.MouseEvent) => {
-    if (onOpenAdmin) {
-      e.preventDefault();
-      onOpenAdmin();
-    }
-  };
 
   return (
     <footer className="main-footer">
@@ -143,24 +134,6 @@ export function Footer({
           <div>
             © {currentYear}{" "}
             {footer.copyright || "PARACORPSE. ALL RIGHTS RESERVED."}
-          </div>
-          <div>
-            <a
-              href="#/admin"
-              onClick={handleAdminClick}
-              className="admin-footer-link"
-              style={{
-                color: "#444",
-                fontSize: "0.75rem",
-                textDecoration: "none",
-                transition: "color 0.2s ease",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#888")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "#444")}
-              title="Site Admin Console"
-            >
-              Admin
-            </a>
           </div>
         </div>
       </div>
