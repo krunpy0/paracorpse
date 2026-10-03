@@ -96,27 +96,28 @@ export function GeneralManager({
           </div>
         </div>
 
-        {/* Hero Background Image */}
+        {/* Hero Background Image / GIF */}
         <div style={{ marginTop: "1.5rem" }}>
           <PhotoUploader
-            label="Hero Background Image"
+            label="Hero Background (Image / GIF)"
             currentPhotoUrl={hero.backgroundImage}
             aspectRatio="wide"
             maxDimension={1920}
-            hint="Upload concert / stage background (JPG, PNG, WebP)"
+            allowGif={true}
+            hint="Upload concert / stage background (JPG, PNG, WebP, GIF — animated supported)"
             onPhotoSelected={handleHeroPhotoSelected}
             onPhotoRemoved={() => handleHeroField("backgroundImage", "")}
           />
 
           <div className="admin-form-group" style={{ marginTop: "1rem" }}>
-            <label className="admin-label">Image Path / URL (Optional)</label>
+            <label className="admin-label">Image or GIF Path / URL (Optional)</label>
             <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
               <input
                 type="text"
                 className="admin-input"
                 value={hero.backgroundImage || ""}
                 onChange={(e) => handleHeroField("backgroundImage", e.target.value)}
-                placeholder="e.g. /uploads/photo.jpg or /assets/live-stage.jpg or https://..."
+                placeholder="e.g. /uploads/hero.gif, /assets/live-stage.jpg, or https://..."
                 style={{ flex: 1 }}
               />
               {hero.backgroundImage && (

@@ -38,10 +38,16 @@
   inset: 0;
   background-size: cover;
   background-position: center 30%;
+  background-repeat: no-repeat;
   filter: brightness(0.35) contrast(1.15) blur(1px);
   will-change: transform;
   transition: transform 0.1s ease-out;
   z-index: 1;
+}
+
+.portal-bg-layer.portal-bg-gif {
+  background-position: center center;
+  filter: brightness(0.42) contrast(1.12);
 }
 
 .portal-dark-overlay {

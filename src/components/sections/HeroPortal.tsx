@@ -17,13 +17,17 @@ export function HeroPortal({
   const textOpacity = Math.max(1 - scrollProgress * 1.15, 0);
   const bgScale = 1 + scrollProgress * 0.05;
   const bgUrl = hero.backgroundImage ? resolveMediaUrl(hero.backgroundImage) : "";
+  const isGif = Boolean(
+    bgUrl &&
+      (bgUrl.toLowerCase().includes(".gif") || bgUrl.startsWith("data:image/gif"))
+  );
 
   return (
     <div className="portal-wrapper" id="portal">
       <div className="portal-chamber">
-        {/* Atmospheric darkened concert / stage background */}
+        {/* Atmospheric darkened concert / stage background (supports JPG/PNG/WebP and animated GIF) */}
         <div
-          className="portal-bg-layer"
+          className={`portal-bg-layer ${isGif ? "portal-bg-gif" : ""}`}
           style={{
             backgroundImage: bgUrl ? `url("${bgUrl}")` : undefined,
             transform: `scale(${bgScale})`,
