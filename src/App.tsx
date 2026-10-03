@@ -14,6 +14,7 @@ import { BandSection } from "./components/sections/BandSection";
 import { AdminApp } from "./admin/AdminApp";
 
 function checkIsAdminRoute(): boolean {
+  if (typeof window === "undefined") return false;
   const hash = window.location.hash.toLowerCase();
   const path = window.location.pathname.toLowerCase();
   return (
