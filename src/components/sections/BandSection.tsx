@@ -16,8 +16,9 @@ export function BandSection({ about = SITE_CONTENT.about }: BandSectionProps) {
 
       <div className="about-manifesto-grid">
         <div className="about-manifesto-col">
-          <p className="about-lead font-display">
-            {about.lead}
+          <p className="about-lead">
+            <span className="lead-primary">Paracorpse</span>
+            <span className="lead-secondary">Modern metal and nu-metal from Miass, Russia.</span>
           </p>
         </div>
         <div className="about-manifesto-col font-ui">

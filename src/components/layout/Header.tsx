@@ -81,7 +81,7 @@ export function Header({
           className="font-mono"
           style={{
             fontSize: "0.85rem",
-            color: "var(--text-muted)",
+            color: "var(--text-secondary)",
             marginBottom: "2rem",
             letterSpacing: "0.15em",
           }}
